@@ -1878,70 +1878,81 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
     <span class="item"><span class="swatch red dashed"></span> 委託料（還流）</span>
   </div>
 
-  <h3 style="margin:24px 0 8px; font-size:16px">各エンティティの役割</h3>
+  <h3 style="margin:24px 0 8px; font-size:16px">
+    <span class="lang ja">各エンティティの役割</span>
+    <span class="lang en">Each entity's role</span>
+  </h3>
   <div class="entity-grid">
     <div class="entity holding">
-      <div class="tag">ホールディング</div>
-      <h4>親会社</h4>
-      <p>EXCEED REAL ESTATE LLC（既存設立済）。全体の最終受益者。</p>
-      <span class="juris">既存</span>
+      <div class="tag"><span class="lang ja">ホールディング</span><span class="lang en">Holding</span></div>
+      <h4><span class="lang ja">親会社</span><span class="lang en">Parent</span></h4>
+      <p><span class="lang ja">EXCEED REAL ESTATE LLC（既存設立済）。全体の最終受益者。</span><span class="lang en">EXCEED REAL ESTATE LLC (existing). Ultimate beneficial owner.</span></p>
+      <span class="juris"><span class="lang ja">既存</span><span class="lang en">Existing</span></span>
     </div>
     <div class="entity invest">
-      <div class="tag">投資会社</div>
-      <h4>資金の中央管理</h4>
-      <p>SAFE／投資契約の受領、各 SPV への資金配分、投資家配当・優先順位の管理。</p>
-      <span class="juris">DIFC（推奨案）</span>
+      <div class="tag"><span class="lang ja">投資会社</span><span class="lang en">Investment Co</span></div>
+      <h4><span class="lang ja">資金の中央管理</span><span class="lang en">Capital hub</span></h4>
+      <p><span class="lang ja">SAFE／投資契約の受領、各 SPV への資金配分、投資家配当・優先順位の管理。</span><span class="lang en">Receives SAFE / investor capital, allocates to SPVs, manages investor dividends &amp; priority.</span></p>
+      <span class="juris"><span class="lang ja">DIFC（推奨案）</span><span class="lang en">DIFC (recommended)</span></span>
     </div>
     <div class="entity pm">
-      <div class="tag">プロジェクト管理</div>
-      <h4>建設・施工統括</h4>
-      <p>建設管理ライセンス保有。SPV と建設委託契約を締結し、施工プロセス全体を統括。</p>
-      <span class="juris">DED（推奨案）</span>
+      <div class="tag"><span class="lang ja">プロジェクト管理</span><span class="lang en">PMC</span></div>
+      <h4><span class="lang ja">建設・施工統括</span><span class="lang en">Construction lead</span></h4>
+      <p><span class="lang ja">建設管理ライセンス保有。SPV と建設委託契約を締結し、施工プロセス全体を統括。</span><span class="lang en">Holds construction-management license. Contracts with SPV; oversees the full build process.</span></p>
+      <span class="juris"><span class="lang ja">DED（推奨案）</span><span class="lang en">DED (recommended)</span></span>
     </div>
     <div class="entity am">
-      <div class="tag">アセット管理</div>
-      <h4>運営・ホスピタリティ</h4>
-      <p>運営管理ライセンス保有。完成後の日常運営を担当し、SPV から運営委託料を受領。</p>
-      <span class="juris">DED（推奨案）</span>
+      <div class="tag"><span class="lang ja">アセット管理</span><span class="lang en">AMC</span></div>
+      <h4><span class="lang ja">運営・ホスピタリティ</span><span class="lang en">Operations / hospitality</span></h4>
+      <p><span class="lang ja">運営管理ライセンス保有。完成後の日常運営を担当し、SPV から運営委託料を受領。</span><span class="lang en">Holds operations license. Runs day-to-day post-launch; receives ops fee from SPV.</span></p>
+      <span class="juris"><span class="lang ja">DED（推奨案）</span><span class="lang en">DED (recommended)</span></span>
     </div>
     <div class="entity spv">
       <div class="tag">SPV</div>
-      <h4>プロジェクト個別保有</h4>
-      <p>1 プロジェクト = 1 SPV。建物・契約・収益を保有し、リスクを物件単位で分離。</p>
-      <span class="juris">DIFC SPC（推奨案）</span>
+      <h4><span class="lang ja">プロジェクト個別保有</span><span class="lang en">Per-project holding</span></h4>
+      <p><span class="lang ja">1 プロジェクト = 1 SPV。建物・契約・収益を保有し、リスクを物件単位で分離。</span><span class="lang en">One SPV per project. Holds the building, contracts &amp; revenue; ringfences asset-level risk.</span></p>
+      <span class="juris"><span class="lang ja">DIFC SPC（推奨案）</span><span class="lang en">DIFC SPC (recommended)</span></span>
     </div>
   </div>
 
   <div class="card">
-    <h3>レイヤー間のフロー</h3>
+    <h3><span class="lang ja">レイヤー間のフロー</span><span class="lang en">Flow between layers</span></h3>
     <ul>
-      <li><b>投資会社 → SPV：</b>資金提供</li>
-      <li><b>プロジェクト管理 → SPV：</b>建設業務 ／ <b>SPV → プロジェクト管理：</b>建設委託料</li>
-      <li><b>アセット管理 → SPV：</b>運営業務 ／ <b>SPV → アセット管理：</b>運営委託料</li>
+      <li><span class="lang ja"><b>投資会社 → SPV：</b>資金提供</span><span class="lang en"><b>Investment Co → SPV:</b> capital</span></li>
+      <li><span class="lang ja"><b>プロジェクト管理 → SPV：</b>建設業務 ／ <b>SPV → プロジェクト管理：</b>建設委託料</span><span class="lang en"><b>PMC → SPV:</b> construction services / <b>SPV → PMC:</b> construction fee</span></li>
+      <li><span class="lang ja"><b>アセット管理 → SPV：</b>運営業務 ／ <b>SPV → アセット管理：</b>運営委託料</span><span class="lang en"><b>AMC → SPV:</b> operating services / <b>SPV → AMC:</b> management fee</span></li>
     </ul>
   </div>
 
   <div class="callout info">
-    <h3>なぜこの 4 レイヤー構造か</h3>
+    <h3><span class="lang ja">なぜこの 4 レイヤー構造か</span><span class="lang en">Why this 4-layer structure</span></h3>
     <ul>
-      <li><b>① リスク分離：</b>各 SPV が物件・契約・負債を抱える。プロジェクト 2 の問題が プロジェクト 1 投資家へ波及しない</li>
-      <li><b>② 税効率：</b>建設管理料・運営管理料を別エンティティで受領 → UAE 法人税（9%）の最適化</li>
-      <li><b>③ スケーラビリティ：</b>同じレイヤー構造のまま プロジェクト 2、3、4 を SPV 追加で横展開可能</li>
-      <li><b>④ 投資家への明瞭性：</b>各 SPV は単一プロジェクトの P&amp;L のみを抱える → 投資家が個別に評価・選択可能</li>
+      <li><span class="lang ja"><b>① リスク分離：</b>各 SPV が物件・契約・負債を抱える。プロジェクト 2 の問題が プロジェクト 1 投資家へ波及しない</span><span class="lang en"><b>① Risk isolation:</b> each SPV holds its own asset, contracts, liabilities — Project 2 issues don't propagate to Project 1 investors</span></li>
+      <li><span class="lang ja"><b>② 税効率：</b>建設管理料・運営管理料を別エンティティで受領 → UAE 法人税（9%）の最適化</span><span class="lang en"><b>② Tax efficiency:</b> construction &amp; ops fees flow to dedicated entities → optimizes UAE corporate tax (9%)</span></li>
+      <li><span class="lang ja"><b>③ スケーラビリティ：</b>同じレイヤー構造のまま プロジェクト 2、3、4 を SPV 追加で横展開可能</span><span class="lang en"><b>③ Scalability:</b> same layered structure scales horizontally — Projects 2/3/4 just add new SPVs</span></li>
+      <li><span class="lang ja"><b>④ 投資家への明瞭性：</b>各 SPV は単一プロジェクトの P&amp;L のみを抱える → 投資家が個別に評価・選択可能</span><span class="lang en"><b>④ Investor clarity:</b> each SPV carries one project's P&amp;L only → investors can evaluate &amp; select individually</span></li>
     </ul>
     <p style="margin-top:8px; font-size:12.5px; color:var(--muted)">
-      各エンティティの設立コスト・CVML 業務範囲は <a href="#cvml" style="color:var(--accent-deep)">2.4 CVML業務範囲</a> ／ <a href="#cost" style="color:var(--accent-deep)">セクション 6</a> 参照。
+      <span class="lang ja">各エンティティの設立コスト・CVML 業務範囲は <a href="#cvml" style="color:var(--accent-deep)">2.4 CVML業務範囲</a> ／ <a href="#cost" style="color:var(--accent-deep)">セクション 9</a> 参照。</span>
+      <span class="lang en">Entity setup costs &amp; CVML scope: see <a href="#cvml" style="color:var(--accent-deep)">2.4 CVML Scope</a> / <a href="#cost" style="color:var(--accent-deep)">Section 9</a>.</span>
     </p>
   </div>
 
   <div class="callout gold">
-    <h3><span class="pill" style="background:var(--gold)">CEO 議論</span> PT Bamboo Lab 15% パートナーシップの帰属先</h3>
+    <h3>
+      <span class="pill" style="background:var(--gold)"><span class="lang ja">CEO 議論</span><span class="lang en">CEO discussion</span></span>
+      <span class="lang ja">PT Bamboo Lab 15% パートナーシップの帰属先</span>
+      <span class="lang en">PT Bamboo Lab 15% partnership — placement</span>
+    </h3>
     <ul>
-      <li>建築パートナー <b>PT Bamboo Lab Architect（インドネシア）</b> に対する 15% パートナーシップの配置先は未確定</li>
-      <li>候補：① ホールディング ／ ② プロジェクト管理 ／ ③ 各 SPV 個別 ／ ④ アセット管理 ／ ⑤ ロイヤリティ＋サービス料のみ（持分なし）</li>
-      <li>初期想定：プロジェクト1 SPV のみに 15% 付与（後続プロジェクトは未開示）</li>
+      <li><span class="lang ja">建築パートナー <b>PT Bamboo Lab Architect（インドネシア）</b> に対する 15% パートナーシップの配置先は未確定</span><span class="lang en">15% partnership for architecture partner <b>PT Bamboo Lab Architect (Indonesia)</b> — placement not yet locked</span></li>
+      <li><span class="lang ja">候補：① ホールディング ／ ② プロジェクト管理 ／ ③ 各 SPV 個別 ／ ④ アセット管理 ／ ⑤ ロイヤリティ＋サービス料のみ（持分なし）</span><span class="lang en">Options: ① Holding / ② PMC / ③ per SPV / ④ AMC / ⑤ royalty + service fees only (no equity)</span></li>
+      <li><span class="lang ja">初期想定：プロジェクト1 SPV のみに 15% 付与（後続プロジェクトは未開示）</span><span class="lang en">Initial assumption: 15% on Project 1 SPV only (future projects not disclosed yet)</span></li>
     </ul>
-    <p style="margin-top:8px; font-size:13px"><b>確認事項：</b>「15%」が現金 / 持分 / ロイヤリティのいずれを意味するか・買戻条項・受領主体（PT 法人 / 個人 / オフショア）を CEO 議論前に PT Bamboo Lab 側と確認</p>
+    <p style="margin-top:8px; font-size:13px">
+      <span class="lang ja"><b>確認事項：</b>「15%」が現金 / 持分 / ロイヤリティのいずれを意味するか・買戻条項・受領主体（PT 法人 / 個人 / オフショア）を CEO 議論前に PT Bamboo Lab 側と確認</span>
+      <span class="lang en"><b>Verify with PT Bamboo Lab before CEO discussion:</b> what "15%" means (cash / equity / royalty), buyback provisions, receiving entity (PT corp / individual / offshore)</span>
+    </p>
   </div>
 </section>
 
@@ -2062,27 +2073,48 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
   </div>
 
   <ol class="steps">
-    <li data-n="1">投資家 → 投資会社（SAFEノート、初期資金提供）</li>
-    <li data-n="2">投資会社 → SPV（資本配分）／ SPV内：運営費 50% ＋ アセット管理料 5% 控除</li>
-    <li data-n="3" data-template="SPV → 投資会社（純利益 {net} AED 還流）">SPV → 投資会社（純利益 39.6M AED 還流）</li>
-    <li data-n="4" data-template="投資会社 → 投資家（配当 {div} 優先支払 / ティア別）">投資会社 → 投資家（配当 19.8M 優先支払 / ティア別）</li>
-    <li data-n="5" data-template="投資会社 → ホールディング（残額 {fnd} AED）">投資会社 → ホールディング（残額 19.8M AED）</li>
-    <li data-n="6" data-template="アセット管理会社 → ホールディング（管理料 {mgmt} AED、同一オーナー）">アセット管理会社 → ホールディング（管理料 4.4M AED、同一オーナー）</li>
+    <li data-n="1">
+      <span class="lang ja">投資家 → 投資会社（SAFEノート、初期資金提供）</span>
+      <span class="lang en">Investor → Investment Co (SAFE note, initial capital)</span>
+    </li>
+    <li data-n="2">
+      <span class="lang ja">投資会社 → SPV（資本配分）／ SPV内：運営費 50% ＋ アセット管理料 5% 控除</span>
+      <span class="lang en">Investment Co → SPV (capital allocation) / Inside SPV: 50% opex + 5% AMC fee deducted</span>
+    </li>
+    <li data-n="3">
+      <span class="lang ja" data-template="SPV → 投資会社（純利益 {net} AED 還流）">SPV → 投資会社（純利益 39.6M AED 還流）</span>
+      <span class="lang en" data-template="SPV → Investment Co (net profit {net} AED returns)">SPV → Investment Co (net profit 39.6M AED returns)</span>
+    </li>
+    <li data-n="4">
+      <span class="lang ja" data-template="投資会社 → 投資家（配当 {div} 優先支払 / ティア別）">投資会社 → 投資家（配当 19.8M 優先支払 / ティア別）</span>
+      <span class="lang en" data-template="Investment Co → Investor (dividend {div}, priority / tier-based)">Investment Co → Investor (dividend 19.8M, priority / tier-based)</span>
+    </li>
+    <li data-n="5">
+      <span class="lang ja" data-template="投資会社 → ホールディング（残額 {fnd} AED）">投資会社 → ホールディング（残額 19.8M AED）</span>
+      <span class="lang en" data-template="Investment Co → Holding (residual {fnd} AED)">Investment Co → Holding (residual 19.8M AED)</span>
+    </li>
+    <li data-n="6">
+      <span class="lang ja" data-template="アセット管理会社 → ホールディング（管理料 {mgmt} AED、同一オーナー）">アセット管理会社 → ホールディング（管理料 4.4M AED、同一オーナー）</span>
+      <span class="lang en" data-template="AMC → Holding (mgmt fee {mgmt} AED, same owner)">AMC → Holding (mgmt fee 4.4M AED, same owner)</span>
+    </li>
   </ol>
 
   <div class="card">
-    <h3 data-template="{rev} AED Year 1 の内訳">88M AED Year 1 の内訳</h3>
+    <h3>
+      <span class="lang ja" data-template="{rev} AED Year 1 の内訳">88M AED Year 1 の内訳</span>
+      <span class="lang en" data-template="{rev} AED Year 1 breakdown">88M AED Year 1 breakdown</span>
+    </h3>
     <div class="bar">
-      <div class="opex">運営費 50%</div>
-      <div class="div">投資家配当 22.5%</div>
-      <div class="founder">創業者持分 22.5%</div>
+      <div class="opex"><span class="lang ja">運営費 50%</span><span class="lang en">Opex 50%</span></div>
+      <div class="div"><span class="lang ja">投資家配当 22.5%</span><span class="lang en">Investor div 22.5%</span></div>
+      <div class="founder"><span class="lang ja">創業者持分 22.5%</span><span class="lang en">Founder 22.5%</span></div>
       <div class="mgmt">5%</div>
     </div>
     <div class="bar-legend">
-      <span class="l1" data-template="運営費 {op}（50%）">運営費 44.0M（50%）</span>
-      <span class="l2" data-template="投資家配当 {div}（22.5%）">投資家配当 19.8M（22.5%）</span>
-      <span class="l3" data-template="創業者持分 {fnd}（22.5%）">創業者持分 19.8M（22.5%）</span>
-      <span class="l4" data-template="管理料 {mgmt}（5%）">管理料 4.4M（5%）</span>
+      <span class="l1"><span class="lang ja" data-template="運営費 {op}（50%）">運営費 44.0M（50%）</span><span class="lang en" data-template="Opex {op} (50%)">Opex 44.0M (50%)</span></span>
+      <span class="l2"><span class="lang ja" data-template="投資家配当 {div}（22.5%）">投資家配当 19.8M（22.5%）</span><span class="lang en" data-template="Investor div {div} (22.5%)">Investor div 19.8M (22.5%)</span></span>
+      <span class="l3"><span class="lang ja" data-template="創業者持分 {fnd}（22.5%）">創業者持分 19.8M（22.5%）</span><span class="lang en" data-template="Founder share {fnd} (22.5%)">Founder share 19.8M (22.5%)</span></span>
+      <span class="l4"><span class="lang ja" data-template="管理料 {mgmt}（5%）">管理料 4.4M（5%）</span><span class="lang en" data-template="Mgmt fee {mgmt} (5%)">Mgmt fee 4.4M (5%)</span></span>
     </div>
   </div>
 </section>
@@ -2101,63 +2133,63 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
 
   <div class="scope-grid">
     <div class="scope">
-      <span class="tag">CVML業務</span>
-      <h4>投資会社</h4>
+      <span class="tag"><span class="lang ja">CVML業務</span><span class="lang en">CVML scope</span></span>
+      <h4><span class="lang ja">投資会社</span><span class="lang en">Investment Co</span></h4>
       <div class="price">5万 AED</div>
       <ul>
-        <li>会社設立・登記</li>
-        <li>定款（MoA）作成</li>
-        <li>SAFEノート起案</li>
-        <li>投資契約書ドラフト</li>
-        <li>株式クラス設計</li>
+        <li><span class="lang ja">会社設立・登記</span><span class="lang en">Incorporation &amp; registration</span></li>
+        <li><span class="lang ja">定款（MoA）作成</span><span class="lang en">MoA drafting</span></li>
+        <li><span class="lang ja">SAFEノート起案</span><span class="lang en">SAFE note drafting</span></li>
+        <li><span class="lang ja">投資契約書ドラフト</span><span class="lang en">Investment agreement drafts</span></li>
+        <li><span class="lang ja">株式クラス設計</span><span class="lang en">Share class design</span></li>
       </ul>
     </div>
     <div class="scope">
-      <span class="tag">CVML業務</span>
-      <h4>プロジェクト管理</h4>
+      <span class="tag"><span class="lang ja">CVML業務</span><span class="lang en">CVML scope</span></span>
+      <h4><span class="lang ja">プロジェクト管理</span><span class="lang en">Project Management</span></h4>
       <div class="price">3万 AED</div>
       <ul>
-        <li>会社設立・登記</li>
-        <li>建設管理ライセンス取得</li>
-        <li>SPVとの建設契約書</li>
-        <li>契約構造設計</li>
-        <li>コーポレートガバナンス</li>
+        <li><span class="lang ja">会社設立・登記</span><span class="lang en">Incorporation &amp; registration</span></li>
+        <li><span class="lang ja">建設管理ライセンス取得</span><span class="lang en">Construction-management license</span></li>
+        <li><span class="lang ja">SPVとの建設契約書</span><span class="lang en">Construction agreements with SPV</span></li>
+        <li><span class="lang ja">契約構造設計</span><span class="lang en">Contract structuring</span></li>
+        <li><span class="lang ja">コーポレートガバナンス</span><span class="lang en">Corporate governance</span></li>
       </ul>
     </div>
     <div class="scope">
-      <span class="tag">CVML業務</span>
-      <h4>アセット管理</h4>
+      <span class="tag"><span class="lang ja">CVML業務</span><span class="lang en">CVML scope</span></span>
+      <h4><span class="lang ja">アセット管理</span><span class="lang en">Asset Management</span></h4>
       <div class="price">3万 AED</div>
       <ul>
-        <li>会社設立・登記</li>
-        <li>運営管理ライセンス取得</li>
-        <li>SPVとの運営契約書</li>
-        <li>ホテル運営契約</li>
-        <li>コーポレートガバナンス</li>
+        <li><span class="lang ja">会社設立・登記</span><span class="lang en">Incorporation &amp; registration</span></li>
+        <li><span class="lang ja">運営管理ライセンス取得</span><span class="lang en">Operations-management license</span></li>
+        <li><span class="lang ja">SPVとの運営契約書</span><span class="lang en">Operating agreements with SPV</span></li>
+        <li><span class="lang ja">ホテル運営契約</span><span class="lang en">Hotel management agreements</span></li>
+        <li><span class="lang ja">コーポレートガバナンス</span><span class="lang en">Corporate governance</span></li>
       </ul>
     </div>
   </div>
 
   <div class="scope" style="margin:18px 0">
-    <span class="tag">CVML業務（SPV毎）</span>
-    <h4>プロジェクト SPV</h4>
+    <span class="tag"><span class="lang ja">CVML業務（SPV毎）</span><span class="lang en">CVML scope (per SPV)</span></span>
+    <h4><span class="lang ja">プロジェクト SPV</span><span class="lang en">Project SPV</span></h4>
     <div class="price">2万 AED / SPV</div>
     <ul>
-      <li>SPV設立・登記</li>
-      <li>リングフェンス構造設計</li>
-      <li>株主構造設計</li>
-      <li>グループ間契約書</li>
-      <li>プロジェクト固有契約</li>
-      <li>ガバナンス書類</li>
+      <li><span class="lang ja">SPV設立・登記</span><span class="lang en">SPV incorporation &amp; registration</span></li>
+      <li><span class="lang ja">リングフェンス構造設計</span><span class="lang en">Ring-fence structure design</span></li>
+      <li><span class="lang ja">株主構造設計</span><span class="lang en">Shareholding structure</span></li>
+      <li><span class="lang ja">グループ間契約書</span><span class="lang en">Inter-company agreements</span></li>
+      <li><span class="lang ja">プロジェクト固有契約</span><span class="lang en">Project-specific contracts</span></li>
+      <li><span class="lang ja">ガバナンス書類</span><span class="lang en">Governance documents</span></li>
     </ul>
   </div>
 
   <div class="callout warn">
-    <h3>＋ 追加業務（全エンティティ共通）</h3>
+    <h3><span class="lang ja">＋ 追加業務（全エンティティ共通）</span><span class="lang en">+ Additional services (all entities)</span></h3>
     <ul>
-      <li>法人税登録（3,000 AED/社）／ VAT登録（1,500 AED/社）／ ビザ申請（8,000 AED/件）</li>
-      <li>継続リテイナー（月額 1.5万〜2.9万 AED）</li>
-      <li>コーポレートタックス・VATコンサルテーション</li>
+      <li><span class="lang ja">法人税登録（3,000 AED/社）／ VAT登録（1,500 AED/社）／ ビザ申請（8,000 AED/件）</span><span class="lang en">Corp tax reg (3,000 AED/entity) / VAT reg (1,500 AED/entity) / Visa (8,000 AED/visa)</span></li>
+      <li><span class="lang ja">継続リテイナー（月額 1.5万〜2.9万 AED）</span><span class="lang en">Ongoing retainer (15K–29K AED/month)</span></li>
+      <li><span class="lang ja">コーポレートタックス・VATコンサルテーション</span><span class="lang en">Corporate tax &amp; VAT consultation</span></li>
     </ul>
   </div>
 </section>
@@ -2374,20 +2406,30 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
     </ul>
   </div>
 
-  <h3 style="margin:24px 0 8px; font-size:16px">設立要件</h3>
+  <h3 style="margin:24px 0 8px; font-size:16px"><span class="lang ja">設立要件</span><span class="lang en">Setup requirements</span></h3>
   <div class="card">
     <ul>
-      <li><b>株式資本：</b>選択する管轄／ライセンスにより異なる（CVML が最適額を提示）</li>
-      <li><b>役員（Director／Manager）：</b>少なくとも 1 名の任命が必要。個人責任が伴う</li>
-      <li><b>ライセンス：</b>「投資・持株活動」に整合した DIFC ライセンス</li>
-      <li><b>株式構造：</b>将来の SAFE 転換に対応した設計を定款（MoA）に組み込み</li>
+      <li><span class="lang ja"><b>株式資本：</b>選択する管轄／ライセンスにより異なる（CVML が最適額を提示）</span><span class="lang en"><b>Share capital:</b> varies by jurisdiction / license — CVML proposes optimal amount</span></li>
+      <li><span class="lang ja"><b>役員（Director／Manager）：</b>少なくとも 1 名の任命が必要。個人責任が伴う</span><span class="lang en"><b>Director / Manager:</b> at least 1 must be appointed; carries personal liability</span></li>
+      <li><span class="lang ja"><b>ライセンス：</b>「投資・持株活動」に整合した DIFC ライセンス</span><span class="lang en"><b>License:</b> DIFC license aligned with "investment / holding" activities</span></li>
+      <li><span class="lang ja"><b>株式構造：</b>将来の SAFE 転換に対応した設計を定款（MoA）に組み込み</span><span class="lang en"><b>Share structure:</b> MoA designed to handle future SAFE conversion</span></li>
     </ul>
   </div>
 
   <div class="callout warn">
-    <h3><span class="pill">重要な訂正</span> SAFE ノートは金商法上の有価証券に該当</h3>
-    <p>SAFE ノートは <b>金商法 第 2 条第 2 項「みなし有価証券」</b> に該当。49 人ルールが完全に適用される。<br/>「SAFE なら 49 人ルールを回避できる」という想定は <b>誤り</b>。</p>
-    <p style="margin-top:8px">→ 50 名以上は公募登録が必要（5,000 万〜2 億円のコスト、6〜12 ヶ月の手続き）</p>
+    <h3>
+      <span class="pill"><span class="lang ja">重要な訂正</span><span class="lang en">Important correction</span></span>
+      <span class="lang ja">SAFE ノートは金商法上の有価証券に該当</span>
+      <span class="lang en">SAFE notes count as securities under FIEA</span>
+    </h3>
+    <p>
+      <span class="lang ja">SAFE ノートは <b>金商法 第 2 条第 2 項「みなし有価証券」</b> に該当。49 人ルールが完全に適用される。<br/>「SAFE なら 49 人ルールを回避できる」という想定は <b>誤り</b>。</span>
+      <span class="lang en">SAFE notes qualify as <b>"deemed securities" under FIEA Art. 2(2)</b>. The 49-investor rule fully applies.<br/>The assumption that "SAFE bypasses the 49-rule" is <b>wrong</b>.</span>
+    </p>
+    <p style="margin-top:8px">
+      <span class="lang ja">→ 50 名以上は公募登録が必要（5,000 万〜2 億円のコスト、6〜12 ヶ月の手続き）</span>
+      <span class="lang en">→ 50+ investors requires public-offering registration (¥50M–¥200M cost, 6–12 months)</span>
+    </p>
   </div>
 </section>
 
@@ -2423,47 +2465,53 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
 
   <div class="split">
     <div class="col good">
-      <h4>✓ 普通株式（議決権あり）</h4>
+      <h4>✓ <span class="lang ja">普通株式（議決権あり）</span><span class="lang en">Common shares (voting)</span></h4>
       <ul>
-        <li>保有：ホールディングのみ</li>
-        <li>議決権：全議案 100%</li>
-        <li>経済的権利：優先配当後の残余</li>
-        <li>目的：創業者による経営支配の維持</li>
+        <li><span class="lang ja">保有：ホールディングのみ</span><span class="lang en">Holder: Holding only</span></li>
+        <li><span class="lang ja">議決権：全議案 100%</span><span class="lang en">Voting: 100% on all matters</span></li>
+        <li><span class="lang ja">経済的権利：優先配当後の残余</span><span class="lang en">Economic right: residual after preferred dividends</span></li>
+        <li><span class="lang ja">目的：創業者による経営支配の維持</span><span class="lang en">Purpose: founder retains control</span></li>
       </ul>
     </div>
     <div class="col" style="border-left:3px solid var(--info)">
-      <h4 style="color:var(--info)">○ 優先株式（無議決権・5 クラス）</h4>
+      <h4 style="color:var(--info)">○ <span class="lang ja">優先株式（無議決権・5 クラス）</span><span class="lang en">Preferred shares (non-voting · 5 classes)</span></h4>
       <ul>
-        <li>保有：投資家（古竹／森／林／芽／根）</li>
-        <li>議決権：原則なし（保護条項を除く）</li>
-        <li>経済的権利：ティア別の優先配当</li>
-        <li>目的：運営支配権なしで投資家リターン</li>
+        <li><span class="lang ja">保有：投資家（古竹／森／林／芽／根）</span><span class="lang en">Holders: investors (古竹/森/林/芽/根 tiers)</span></li>
+        <li><span class="lang ja">議決権：原則なし（保護条項を除く）</span><span class="lang en">Voting: none in principle (except protective provisions)</span></li>
+        <li><span class="lang ja">経済的権利：ティア別の優先配当</span><span class="lang en">Economic right: tier-based priority dividend</span></li>
+        <li><span class="lang ja">目的：運営支配権なしで投資家リターン</span><span class="lang en">Purpose: investor returns without operating control</span></li>
       </ul>
     </div>
   </div>
 
-  <h3 style="margin:24px 0 8px; font-size:16px">保護条項（優先株主が議決権を持つ事項）</h3>
+  <h3 style="margin:24px 0 8px; font-size:16px">
+    <span class="lang ja">保護条項（優先株主が議決権を持つ事項）</span>
+    <span class="lang en">Protective provisions (matters preferred holders DO vote on)</span>
+  </h3>
   <div class="card">
     <ul>
-      <li>会社の売却・合併</li>
-      <li>清算・解散</li>
-      <li>上位優先株式の発行</li>
-      <li>当該クラスの株主権利変更</li>
-      <li>定款の重要な改訂</li>
-      <li>関連当事者取引（一定額超）</li>
-      <li>授権資本の増額</li>
-      <li>事業目的の重要な変更</li>
+      <li><span class="lang ja">会社の売却・合併</span><span class="lang en">Sale or merger of the company</span></li>
+      <li><span class="lang ja">清算・解散</span><span class="lang en">Liquidation / dissolution</span></li>
+      <li><span class="lang ja">上位優先株式の発行</span><span class="lang en">Issuance of senior preferred shares</span></li>
+      <li><span class="lang ja">当該クラスの株主権利変更</span><span class="lang en">Changes to class rights</span></li>
+      <li><span class="lang ja">定款の重要な改訂</span><span class="lang en">Material MoA amendments</span></li>
+      <li><span class="lang ja">関連当事者取引（一定額超）</span><span class="lang en">Related-party transactions above threshold</span></li>
+      <li><span class="lang ja">授権資本の増額</span><span class="lang en">Increase in authorized share capital</span></li>
+      <li><span class="lang ja">事業目的の重要な変更</span><span class="lang en">Material change in business purpose</span></li>
     </ul>
   </div>
 
   <div class="callout info">
-    <h3>日本人投資家へのコミュニケーション</h3>
-    <p>日本人投資家は、以下の理由で無議決権優先株式構造を比較的受け入れやすい：</p>
+    <h3><span class="lang ja">日本人投資家へのコミュニケーション</span><span class="lang en">Communicating with Japanese investors</span></h3>
+    <p>
+      <span class="lang ja">日本人投資家は、以下の理由で無議決権優先株式構造を比較的受け入れやすい：</span>
+      <span class="lang en">Japanese investors are generally receptive to non-voting preferred structures because:</span>
+    </p>
     <ul>
-      <li>転換社債（CB）・J-KISS との類似性</li>
-      <li>初期段階のベンチャーで創業者支配を尊重する文化</li>
-      <li>主な関心は経済的リターン（運営支配権ではない）</li>
-      <li>保護条項により重要事項に対する発言権は保持</li>
+      <li><span class="lang ja">転換社債（CB）・J-KISS との類似性</span><span class="lang en">Similar to convertible bonds &amp; J-KISS notes</span></li>
+      <li><span class="lang ja">初期段階のベンチャーで創業者支配を尊重する文化</span><span class="lang en">Cultural deference to founder control in early-stage ventures</span></li>
+      <li><span class="lang ja">主な関心は経済的リターン（運営支配権ではない）</span><span class="lang en">Primary interest is economic return, not operating control</span></li>
+      <li><span class="lang ja">保護条項により重要事項に対する発言権は保持</span><span class="lang en">Protective provisions preserve voice on material matters</span></li>
     </ul>
   </div>
 </section>
