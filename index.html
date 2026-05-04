@@ -687,6 +687,22 @@ input.fillin::placeholder, textarea.fillin::placeholder{color:var(--muted); font
 .dec-badge.pending{background:var(--gold); color:#fff}
 .dec-badge.hold{background:var(--muted); color:#fff}
 
+/* Priority traffic-light badges (Red / Amber / Yellow) */
+.pri-badge{
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:9.5px; font-weight:800; letter-spacing:.08em;
+  padding:3px 9px; border-radius:99px; text-transform:uppercase;
+  margin-right:6px; vertical-align:middle; white-space:nowrap;
+}
+.pri-badge.red{background:#b94a3b; color:#fff}
+.pri-badge.amber{background:#d17a3d; color:#fff}
+.pri-badge.yellow{background:#c69a37; color:#fff}
+.pri-badge::before{
+  content:"●"; font-size:11px; margin-right:2px; line-height:0;
+}
+/* Priority cell in tables */
+td.pri-cell{white-space:nowrap}
+
 .callout.decision{
   border-left-width:4px; padding-top:16px;
   background:var(--neutral-bg); border-left-color:var(--muted);
@@ -1220,7 +1236,26 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
     <a href="#docs-categories"><span class="num">8.1</span> <span class="lang ja">必要書類</span><span class="lang en">Document Categories</span></a>
     <a href="#docs-timeline"><span class="num">8.2</span> <span class="lang ja">タイムライン</span><span class="lang en">Timeline</span></a>
     <a href="#docs-actions"><span class="num">8.3</span> <span class="lang ja">即実行アクション</span><span class="lang en">Action Items</span></a>
-    <a href="#cost"><span class="num">9</span> <span class="lang ja">CVML主要費用</span><span class="lang en">CVML Key Fees</span></a>
+    <a href="#cost"><span class="num">9.1</span> <span class="lang ja">提案書ベースのコスト</span><span class="lang en">Proposal Baseline Costs</span></a>
+    <a href="#cost-scenarios"><span class="num">9.2</span> <span class="lang ja">3 シナリオ</span><span class="lang en">3 Cost Scenarios</span></a>
+    <a href="#cost-out-of-scope"><span class="num">9.3</span> <span class="lang ja">スコープ外コスト</span><span class="lang en">Out-of-Scope Costs</span></a>
+    <a href="#cost-leverage"><span class="num">9.4</span> <span class="lang ja">交渉レバレッジ</span><span class="lang en">Negotiation Leverage</span></a>
+    <a href="#cost-strategy"><span class="num">9.5</span> <span class="lang ja">交渉戦略</span><span class="lang en">Negotiation Strategy</span></a>
+    <a href="#cost-ceo-input"><span class="num">9.6</span> <span class="lang ja">CEO 入力欄</span><span class="lang en">CEO Input Fields</span></a>
+    <a href="#part9-summary"><span class="num">9.7</span> <span class="lang ja">Part 9 まとめ</span><span class="lang en">Part 9 Summary</span></a>
+    <a href="#cvml-team"><span class="num">10.1</span> <span class="lang ja">CVML キーパーソン</span><span class="lang en">CVML Key Personnel</span></a>
+    <a href="#cvml-strengths-gaps"><span class="num">10.2</span> <span class="lang ja">強み vs ギャップ</span><span class="lang en">Strengths vs Gaps</span></a>
+    <a href="#cvml-verification"><span class="num">10.3</span> <span class="lang ja">確認チェックリスト</span><span class="lang en">Verification Checklist</span></a>
+    <a href="#risk-gaps"><span class="num">11.1</span> <span class="lang ja">スコープ外領域</span><span class="lang en">Out-of-Scope Areas</span></a>
+    <a href="#risk-matrix"><span class="num">11.2</span> <span class="lang ja">リスクマトリクス</span><span class="lang en">Risk Matrix</span></a>
+    <a href="#risk-pre-signing"><span class="num">11.3</span> <span class="lang ja">契約前確認</span><span class="lang en">Pre-Signing Items</span></a>
+    <a href="#risk-mitigation"><span class="num">11.4</span> <span class="lang ja">ミティゲーション</span><span class="lang en">Mitigation Actions</span></a>
+    <a href="#master-decisions"><span class="num">12.1</span> <span class="lang ja">全決定事項マスターログ</span><span class="lang en">Master Decisions Log</span></a>
+    <a href="#action-items"><span class="num">12.2</span> <span class="lang ja">アクションアイテム</span><span class="lang en">Action Items</span></a>
+    <a href="#implementation-timeline"><span class="num">12.3</span> <span class="lang ja">タイムライン</span><span class="lang en">Implementation Timeline</span></a>
+    <a href="#ceo-checklist"><span class="num">12.4</span> <span class="lang ja">CEO 決定リスト</span><span class="lang en">CEO Decision Checklist</span></a>
+    <a href="#next-steps"><span class="num">12.5</span> <span class="lang ja">次ステップ</span><span class="lang en">Next Steps</span></a>
+    <a href="#handoff"><span class="num">12.6</span> <span class="lang ja">ハンドオフ</span><span class="lang en">Handoff Resources</span></a>
     <a href="#tax" class="pending"><span class="num">7</span> 税務・登録要件</a>
     <a href="#docs" class="pending"><span class="num">8</span> ドキュメントチェックリスト</a>
     <a href="#fees" class="pending"><span class="num">9</span> 費用詳細分析</a>
@@ -2142,6 +2177,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge red" title="必須：資金調達に直接影響">RED</span>
       <span class="lang ja">決定 3A — 管轄区域 ／ 推奨案：<b>DIFC</b></span>
       <span class="lang en">Decision 3A — Jurisdiction / Recommended: <b>DIFC</b></span>
     </h3>
@@ -2364,6 +2400,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge red" title="必須：投資家に何を提供するか">RED</span>
       <span class="lang ja">決定 3B — 投資家には <b>無議決権優先株式</b></span>
       <span class="lang en">Decision 3B — Investors hold <b>non-voting preferred shares</b></span>
     </h3>
@@ -2697,6 +2734,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold" selected>保留</option>
         <option value="dubai">ドバイ側確認</option>
       </select>
+      <span class="pri-badge amber" title="重要：マーケティング後の変更は投資家信頼に影響">AMBER</span>
       <span class="lang ja">決定 3C — 議論続行（推奨案：<b>Model A</b>）</span>
       <span class="lang en">Decision 3C — Under discussion (recommended: <b>Model A</b>)</span>
     </h3>
@@ -3186,6 +3224,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge amber" title="重要：エンティティ設立後の変更は高コスト">AMBER</span>
       <span class="lang ja">決定 4A — PMC 管轄区域 ／ 推奨案：<b>Dubai Mainland (DED)</b></span>
       <span class="lang en">Decision 4A — PMC Jurisdiction / Recommended: <b>Dubai Mainland (DED)</b></span>
     </h3>
@@ -3400,6 +3439,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge red" title="必須：エクイティ構造はピッチ資料の前に確定">RED</span>
       <span class="lang ja">決定 4B — 15% 配置先 ／ 推奨案：<b>Option 3（プロジェクト 1 SPV のみに 15%）</b></span>
       <span class="lang en">Decision 4B — Where to place 15% / Recommended: <b>Option 3 (15% in Project 1 SPV only)</b></span>
     </h3>
@@ -3530,8 +3570,9 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
-      <span class="lang ja">決定 4C — PMC 手数料 ／ 推奨案：<b>プロジェクトコストの 7%</b></span>
-      <span class="lang en">Decision 4C — PMC Fee / Recommended: <b>7% of project cost</b></span>
+      <span class="pri-badge yellow" title="柔軟：建設契約締結時に確定で OK">YELLOW</span>
+      <span class="lang ja">決定 4C — PMC 手数料 ／ 推奨案：<b>5–10% 範囲（建設契約時に最終確定）</b></span>
+      <span class="lang en">Decision 4C — PMC Fee / Recommended: <b>5–10% range (finalized at construction signing)</b></span>
     </h3>
     <p>
       <span class="lang ja">業界標準は 5–10%。AYUVA は<b>竹建築という専門性</b>のため標準より上目に設定。</span>
@@ -3668,6 +3709,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold" selected>保留</option>
         <option value="dubai">ドバイ側確認</option>
       </select>
+      <span class="pri-badge yellow" title="柔軟：開業 12-18 ヶ月前に最終決定">YELLOW</span>
       <span class="lang ja">決定 5A — 運営モデル ／ 推奨案：<b>Option 3（ハイブリッドコンサルティング）</b></span>
       <span class="lang en">Decision 5A — Operating Model / Recommended: <b>Option 3 (Hybrid Consulting)</b></span>
     </h3>
@@ -3796,6 +3838,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge amber" title="重要：エンティティ設立後の変更は高コスト">AMBER</span>
       <span class="lang ja">決定 5B — AMC 管轄区域 ／ 推奨案：<b>Dubai Mainland (DED)</b></span>
       <span class="lang en">Decision 5B — AMC Jurisdiction / Recommended: <b>Dubai Mainland (DED)</b></span>
     </h3>
@@ -3904,6 +3947,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold" selected>保留</option>
         <option value="dubai">ドバイ側確認</option>
       </select>
+      <span class="pri-badge yellow" title="柔軟：立地確定時に同時決定。資金調達には直接影響しない">YELLOW</span>
       <span class="lang ja">決定 6A-pre — Lease vs Buy ／ <b>CEO 議論待ち</b>（Project 1 立地確定と連動）</span>
       <span class="lang en">Decision 6A-pre — Lease vs Buy / <b>Awaiting CEO call</b> (tied to Project 1 location)</span>
     </h3>
@@ -3993,6 +4037,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold" selected>保留</option>
         <option value="dubai">ドバイ側確認</option>
       </select>
+      <span class="pri-badge amber" title="重要：Lease/Buy 連動。設立後の変更は高コスト">AMBER</span>
       <span class="lang ja">決定 6A — SPV 管轄区域 ／ 推奨案：<b>賃借なら DIFC SPC ／ 購入なら DED</b></span>
       <span class="lang en">Decision 6A — SPV Jurisdiction / Recommended: <b>DIFC SPC if lease / DED if buy</b></span>
     </h3>
@@ -4077,6 +4122,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge yellow" title="柔軟：すでに SPV1 のみで合意済み">YELLOW</span>
       <span class="lang ja">決定 6B — 初期は <b>SPV1 のみ</b> 設立</span>
       <span class="lang en">Decision 6B — Set up <b>SPV1 only</b> initially</span>
     </h3>
@@ -4109,6 +4155,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge red" title="必須：投資家への資金フロー構造、MoA に明記">RED</span>
       <span class="lang ja">決定 6C — SPV 所有構造 ／ 推奨案：<b>Option 2（Investment Co が SPV を 100% 保有）</b></span>
       <span class="lang en">Decision 6C — SPV Ownership / Recommended: <b>Option 2 (Investment Co owns 100% of SPV)</b></span>
     </h3>
@@ -4299,6 +4346,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold">保留</option>
         <option value="dubai" selected>ドバイ側確認</option>
       </select>
+      <span class="pri-badge yellow" title="柔軟：登録時期は段階的に調整可能">YELLOW</span>
       <span class="lang ja">決定 7A — 推奨案：<b>Option 3（戦略的フェーズ登録）</b></span>
       <span class="lang en">Decision 7A — Recommended: <b>Option 3 (Strategic Phased Registration)</b></span>
     </h3>
@@ -4377,7 +4425,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
   </p>
 
   <div class="callout warn" style="border-left-width:4px">
-    <h3><span class="pill">HIGH PRIORITY</span> <span class="lang ja">投資会社の 0% 法人税ステータス確保</span><span class="lang en">Secure 0% corporate-tax status for the Investment Co</span></h3>
+    <h3><span class="pri-badge amber" title="重要：設立後の税務構造変更は困難">AMBER</span> <span class="pill">HIGH PRIORITY</span> <span class="lang ja">投資会社の 0% 法人税ステータス確保</span><span class="lang en">Secure 0% corporate-tax status for the Investment Co</span></h3>
     <p><span class="lang ja">DIFC 投資会社が QFZP 資格を満たせば <b>UAE 法人税が 0%</b>（標準 9% から）。年間 50K–200K+ AED の節税効果。</span><span class="lang en">If the DIFC Investment Co qualifies as QFZP, UAE corporate tax drops from 9% to <b>0%</b>. Annual savings 50K–200K+ AED.</span></p>
     <ul>
       <li><span class="lang ja"><b>条件①：</b>「適格収入」（受動的投資収入・海外源泉収入）を獲得</span><span class="lang en"><b>Condition ①:</b> earns "qualifying income" (passive investment income, foreign-source income)</span></li>
@@ -4408,6 +4456,7 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
         <option value="hold" selected>保留</option>
         <option value="dubai">ドバイ側確認</option>
       </select>
+      <span class="pri-badge yellow" title="柔軟：内部運用判断、いつでも変更可">YELLOW</span>
       <span class="lang ja">決定 7B — <b>HOLD</b>（社内対応の方向）</span>
       <span class="lang en">Decision 7B — <b>HOLD</b> (likely in-house)</span>
     </h3>
@@ -4530,71 +4579,614 @@ table.dec-table td:nth-child(4){text-align:center; width:130px}
 
 </div><!-- /part-band part-8 -->
 
-<!-- 06 Costs -->
+<div class="part-divider"><span>Part 9 · 費用詳細分析（CVML Fees）</span></div>
+
+<div class="part-band part-2">
+
+<!-- Part 9 / 9.1 — Proposal Baseline -->
 <section class="chapter" id="cost">
-  <h2>6 — CVML主要費用</h2>
-  <p class="sub">提案書ベースのコスト概算</p>
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.1 提案書ベースのコスト</span>
+    <span class="lang en">9.1 Proposal Baseline Costs</span>
+  </h2>
+  <p class="sub"><span class="lang ja">CVML 提案書の一括費用 ＋ 登録・リテイナー</span><span class="lang en">CVML proposal lump-sum fees + registrations + retainers</span></p>
 
-  <h3 style="margin:18px 0 8px; font-size:15px">エンティティ設立費用（一括）</h3>
+  <h3 style="margin:18px 0 8px; font-size:15px"><span class="lang ja">エンティティ設立費用</span><span class="lang en">Entity setup (lump sum)</span></h3>
   <div class="cost-grid">
-    <div class="cost investor">
-      <div class="l"><b>投資会社</b><small>Investment Company</small></div>
-      <div class="price">5万 AED</div>
-    </div>
-    <div class="cost proj">
-      <div class="l"><b>プロジェクト管理</b><small>Project Management</small></div>
-      <div class="price">3万 AED</div>
-    </div>
-    <div class="cost asset">
-      <div class="l"><b>アセット管理</b><small>Asset Management</small></div>
-      <div class="price">3万 AED</div>
-    </div>
-    <div class="cost spv">
-      <div class="l"><b>プロジェクトSPV</b><small>1社あたり</small></div>
-      <div class="price">2万 AED</div>
-    </div>
+    <div class="cost investor"><div class="l"><b><span class="lang ja">投資会社</span><span class="lang en">Investment Co</span></b></div><div class="price">5万 AED</div></div>
+    <div class="cost proj"><div class="l"><b><span class="lang ja">プロジェクト管理</span><span class="lang en">PMC</span></b></div><div class="price">3万 AED</div></div>
+    <div class="cost asset"><div class="l"><b><span class="lang ja">アセット管理</span><span class="lang en">AMC</span></b></div><div class="price">3万 AED</div></div>
+    <div class="cost spv"><div class="l"><b>SPV</b><small><span class="lang ja">1 社あたり</span><span class="lang en">per SPV</span></small></div><div class="price">2万 AED</div></div>
   </div>
 
-  <h3 style="margin:18px 0 8px; font-size:15px">登録・申請費用（社毎）</h3>
+  <h3 style="margin:18px 0 8px; font-size:15px"><span class="lang ja">登録・申請費用</span><span class="lang en">Registrations / per entity</span></h3>
   <div class="fees">
-    <div class="fee"><b>法人税登録</b><small>1社あたり</small><div class="price">3,000 AED</div></div>
-    <div class="fee"><b>VAT登録</b><small>1社あたり</small><div class="price">1,500 AED</div></div>
-    <div class="fee hold"><b>ビザ</b><small>1件あたり</small><div class="price">8,000 AED</div></div>
+    <div class="fee"><b><span class="lang ja">法人税登録</span><span class="lang en">Corp Tax</span></b><div class="price">3,000 AED</div></div>
+    <div class="fee"><b>VAT</b><div class="price">1,500 AED</div></div>
+    <div class="fee hold"><b><span class="lang ja">ビザ</span><span class="lang en">Visa</span></b><div class="price">8,000 AED</div></div>
   </div>
-  <p style="margin:8px 4px 0; font-size:12.5px; color:var(--muted)">
-    ※ ビザサービスは社内対応の可能性が高く、CVML スコープから除外検討中（推定 <b style="color:var(--ink-soft)">96,000 AED</b> 削減可能）
-  </p>
+  <p style="margin:8px 4px 0; font-size:12.5px; color:var(--muted)"><span class="lang ja">※ ビザは社内対応の方向（HOLD）→ <b>96,000 AED 節約</b></span><span class="lang en">※ Visa likely in-house (HOLD) → <b>96,000 AED savings</b></span></p>
 
-  <h3 style="margin:18px 0 8px; font-size:15px">リテイナー選択肢（月額・継続契約）</h3>
+  <h3 style="margin:18px 0 8px; font-size:15px"><span class="lang ja">リテイナー選択肢（月額）</span><span class="lang en">Retainer options (monthly)</span></h3>
   <div class="plans">
-    <div class="plan"><b>プラン1</b><div class="price">1.5万 AED</div><small>基本プラン</small></div>
-    <div class="plan"><b>プラン2</b><div class="price">2.0万 AED</div><small>標準プラン</small></div>
-    <div class="plan"><b>プラン3</b><div class="price">2.9万 AED</div><small>フルサポート</small></div>
+    <div class="plan"><b><span class="lang ja">プラン 1</span><span class="lang en">Plan 1</span></b><div class="price">1.5万 AED</div><small><span class="lang ja">基本</span><span class="lang en">Basic — 9 hrs</span></small></div>
+    <div class="plan"><b><span class="lang ja">プラン 2</span><span class="lang en">Plan 2</span></b><div class="price">2.0万 AED</div><small><span class="lang ja">標準</span><span class="lang en">Standard — 14 hrs</span></small></div>
+    <div class="plan"><b><span class="lang ja">プラン 3</span><span class="lang en">Plan 3</span></b><div class="price">2.9万 AED</div><small><span class="lang ja">フルサポート</span><span class="lang en">Full — 29 hrs</span></small></div>
   </div>
+</section>
+
+<!-- Part 9 / 9.2 — 3 Cost Scenarios -->
+<section class="chapter" id="cost-scenarios">
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.2 3 つのコストシナリオ</span>
+    <span class="lang en">9.2 Three Cost Scenarios</span>
+  </h2>
+  <p class="sub"><span class="lang ja">保守 / バランス / 包括 — CEO 議論用</span><span class="lang en">Conservative / Balanced / Comprehensive — for CEO discussion</span></p>
+
+  <table class="alt-table">
+    <thead><tr>
+      <th><span class="lang ja">シナリオ</span><span class="lang en">Scenario</span></th>
+      <th><span class="lang ja">エンティティ設立</span><span class="lang en">Entity setup</span></th>
+      <th><span class="lang ja">登録</span><span class="lang en">Registrations</span></th>
+      <th><span class="lang ja">追加起案</span><span class="lang en">Custom drafting</span></th>
+      <th><span class="lang ja">リテイナー（年）</span><span class="lang en">Retainer (annual)</span></th>
+      <th><span class="lang ja">CVML 合計</span><span class="lang en">CVML total</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="lang ja"><b>保守（プラン 1）</b></span><span class="lang en"><b>Conservative (P1)</b></span></td><td>13万</td><td>1.65万</td><td>0</td><td>18万</td><td><b>~32.6万 AED</b></td></tr>
+      <tr class="recommended"><td><span class="lang ja"><b>バランス（プラン 2）★</b></span><span class="lang en"><b>Balanced (P2) ★</b></span></td><td>13万</td><td>1.65万</td><td>2.5万</td><td>24万</td><td><b>~41.2万 AED</b></td></tr>
+      <tr><td><span class="lang ja"><b>包括（プラン 3）</b></span><span class="lang en"><b>Comprehensive (P3)</b></span></td><td>13万</td><td>1.65万</td><td>5–7.5万 + HMA 3–5万</td><td>34.8万</td><td><b>~57.5–62万 AED</b></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Part 9 / 9.3 — Out-of-Scope Costs -->
+<section class="chapter" id="cost-out-of-scope">
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.3 CVML スコープ外コスト（別途予算化）</span>
+    <span class="lang en">9.3 Out-of-Scope Costs (Separate Budget)</span>
+  </h2>
+  <p class="sub"><span class="lang ja">CVML には含まれない、別途必要な費用</span><span class="lang en">Costs not in CVML scope — must be separately budgeted</span></p>
 
   <div class="callout warn">
-    <h3>注意：CVMLスコープ外（別途予算化が必要）</h3>
+    <h3><span class="lang ja">想定追加予算：20–50 万 AED</span><span class="lang en">Estimated additional budget: 200–500K AED</span></h3>
     <ul>
-      <li>会計・記帳業務</li>
-      <li>税務コンプライアンス</li>
-      <li>監査済財務諸表</li>
-      <li>D&O保険</li>
+      <li><span class="lang ja">銀行口座開設費（5–15K /entity）</span><span class="lang en">Bank account opening (5–15K per entity)</span></li>
+      <li><span class="lang ja">監査費（年 15–50K /entity）</span><span class="lang en">Audit (15–50K per entity per year)</span></li>
+      <li><span class="lang ja">経理・記帳（月 3–15K /entity）</span><span class="lang en">Accounting / bookkeeping (3–15K per entity per month)</span></li>
+      <li><span class="lang ja">ライセンス更新（年 8–50K+）</span><span class="lang en">License renewals (8–50K+ annually)</span></li>
+      <li><span class="lang ja">D&amp;O 保険（年 15–50K /entity）</span><span class="lang en">D&amp;O insurance (15–50K per entity per year)</span></li>
+      <li><span class="lang ja">専門弁護士（不動産・建設・HMA）</span><span class="lang en">Specialized counsel (real estate / construction / HMA)</span></li>
+      <li><span class="lang ja">日本側弁護士コーディネーション</span><span class="lang en">Japan counsel coordination</span></li>
     </ul>
   </div>
 
-  <h3 style="margin:18px 0 8px; font-size:15px">想定総コスト試算（参考）</h3>
-  <table class="totals">
-    <tr><td>投資会社（5万）＋ プロジェクト管理（3万）＋ アセット管理（3万）</td><td>11万 AED</td></tr>
-    <tr><td>SPV ×3社（2万 × 3）</td><td>6万 AED</td></tr>
-    <tr><td>法人税登録 ×6社（3,000 × 6）＋ VAT登録 ×6社（1,500 × 6）</td><td>2.7万 AED</td></tr>
-    <tr class="hold"><td>ビザ ×3件（8,000 × 3）</td><td>2.4万 AED</td></tr>
-    <tr><td>初期セットアップ合計（ビザ社内対応の場合）</td><td>約 19.7万 AED</td></tr>
-    <tr><td>＋ 月額リテイナー（プラン2選択時）</td><td>年間 24万 AED</td></tr>
+  <table class="alt-table">
+    <thead><tr><th><span class="lang ja">シナリオ</span><span class="lang en">Scenario</span></th><th>CVML</th><th><span class="lang ja">CVML 外</span><span class="lang en">Non-CVML</span></th><th><span class="lang ja">Year 1 合計</span><span class="lang en">Year 1 total</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="lang ja">保守</span><span class="lang en">Conservative</span></td><td>32.6万</td><td>20万</td><td><b>~52.5万 AED</b></td></tr>
+      <tr class="recommended"><td><span class="lang ja"><b>バランス ★</b></span><span class="lang en"><b>Balanced ★</b></span></td><td>41.2万</td><td>35万</td><td><b>~76万 AED</b></td></tr>
+      <tr><td><span class="lang ja">包括</span><span class="lang en">Comprehensive</span></td><td>61.9万</td><td>50万</td><td><b>~112万 AED</b></td></tr>
+    </tbody>
   </table>
-  <p style="margin:8px 4px 0; font-size:12px; color:var(--muted)">
-    詳細なシナリオ別コスト分析（保守 / バランス / 包括）と CEO 議論用の入力欄は <a href="#fees" style="color:var(--accent-deep)">セクション 9 — 費用詳細分析</a>（構築予定）にて整理。
-  </p>
+  <p style="font-size:12.5px; color:var(--muted); margin-top:8px"><span class="lang ja">※ <b>CVML は総コストの 40–60%</b> しか占めない点に注意。</span><span class="lang en">※ <b>CVML is only 40–60% of total legal/compliance costs.</b></span></p>
 </section>
+
+<!-- Part 9 / 9.4 — Negotiation Leverage -->
+<section class="chapter" id="cost-leverage">
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.4 6 つの交渉レバレッジ</span>
+    <span class="lang en">9.4 6 Negotiation Leverage Points</span>
+  </h2>
+
+  <table class="alt-table">
+    <thead><tr><th><span class="lang ja">レバレッジ</span><span class="lang en">Lever</span></th><th><span class="lang ja">想定削減</span><span class="lang en">Expected savings</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="lang ja">① エンティティ設立のボリュームディスカウント</span><span class="lang en">① Volume discount on entity setup</span></td><td>13–20K AED</td></tr>
+      <tr><td><span class="lang ja">② 登録費のバンドル価格</span><span class="lang en">② Bundled registration pricing</span></td><td>8.5–16.5K AED</td></tr>
+      <tr><td><span class="lang ja">③ ビザサービス除外（HOLD 済）</span><span class="lang en">③ Visa removed from scope (already planned)</span></td><td>96K AED</td></tr>
+      <tr><td><span class="lang ja">④ リテイナー前払い割引</span><span class="lang en">④ Retainer prepayment discount</span></td><td>24–36K AED</td></tr>
+      <tr><td><span class="lang ja">⑤ 将来案件パイプラインのコミットメント</span><span class="lang en">⑤ Future pipeline lock-in</span></td><td><span class="lang ja">変動</span><span class="lang en">Variable</span></td></tr>
+      <tr><td><span class="lang ja">⑥ スコープ明確化（追加費用回避）</span><span class="lang en">⑥ Scope clarification (avoid surprises)</span></td><td><span class="lang ja">回避価値</span><span class="lang en">Avoidance</span></td></tr>
+      <tr class="recommended"><td><b><span class="lang ja">合計（現実的）</span><span class="lang en">Realistic total</span></b></td><td><b>50–90K AED（12–20%）</b></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Part 9 / 9.5 — Negotiation Strategy -->
+<section class="chapter" id="cost-strategy">
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.5 3 つの交渉戦略</span>
+    <span class="lang en">9.5 3 Negotiation Strategies</span>
+  </h2>
+
+  <div class="callout decision" data-status="hold">
+    <h3>
+      <select class="dec-status" data-key="dec-9c" data-status="hold">
+        <option value="confirmed">確定</option>
+        <option value="lawyer">弁護士確認</option>
+        <option value="hold" selected>保留</option>
+        <option value="dubai">ドバイ側確認</option>
+      </select>
+      <span class="pri-badge yellow">YELLOW</span>
+      <span class="lang ja">決定 9C — 交渉戦略 ／ <b>CEO 議論待ち</b></span>
+      <span class="lang en">Decision 9C — Negotiation strategy / <b>Awaiting CEO</b></span>
+    </h3>
+  </div>
+
+  <div class="options-grid">
+    <details class="opt-card">
+      <summary>
+        <h4>A. <span class="lang ja">攻撃型</span><span class="lang en">Aggressive</span></h4>
+        <span class="opt-subtitle"><span class="lang ja">全レバレッジ強気利用</span><span class="lang en">Use all leverage hard</span></span>
+      </summary>
+      <div class="opt-body">
+        <p style="font-size:12.5px"><span class="lang ja">25–30% 削減見込。リスク：関係性悪化。</span><span class="lang en">25–30% reduction expected. Risk: relationship damage.</span></p>
+      </div>
+    </details>
+    <details class="opt-card recommended">
+      <summary>
+        <h4>B. <span class="lang ja">戦略型 ★</span><span class="lang en">Strategic ★</span></h4>
+        <span class="opt-subtitle"><span class="lang ja">2-3 ポイント強気、他は善意</span><span class="lang en">Push 2–3 points firmly, others as goodwill</span></span>
+      </summary>
+      <div class="opt-body">
+        <p style="font-size:12.5px"><span class="lang ja">15–20% 削減見込。低リスク。<b>推奨</b>。</span><span class="lang en">15–20% reduction expected. Lower risk. <b>Recommended</b>.</span></p>
+      </div>
+    </details>
+    <details class="opt-card">
+      <summary>
+        <h4>C. <span class="lang ja">関係性優先</span><span class="lang en">Relationship-first</span></h4>
+        <span class="opt-subtitle"><span class="lang ja">現行価格を受諾</span><span class="lang en">Accept current pricing</span></span>
+      </summary>
+      <div class="opt-body">
+        <p style="font-size:12.5px"><span class="lang ja">削減なし。長期パートナーシップ重視。</span><span class="lang en">No reduction. Prioritizes long-term partnership.</span></p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- Part 9 / 9.6 — CEO Input -->
+<section class="chapter" id="cost-ceo-input">
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.6 CEO 議論後の入力欄</span>
+    <span class="lang en">9.6 CEO Discussion — Input Fields</span>
+  </h2>
+  <p class="sub"><span class="lang ja">議論後の決定値を記録（自動保存）</span><span class="lang en">Record post-discussion values (auto-saved)</span></p>
+
+  <div class="card">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">選択シナリオ</span><span class="lang en">Selected scenario</span></label>
+        <input type="text" class="fillin" data-key="ceo-scenario" placeholder="保守 / バランス / 包括 / カスタム" style="width:100%" />
+      </div>
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">確定 CVML 一括費用</span><span class="lang en">Final CVML lump-sum</span></label>
+        <input type="text" class="fillin" data-key="ceo-cvml-fee" placeholder="AED" style="width:100%" />
+      </div>
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">選択リテイナープラン</span><span class="lang en">Selected retainer plan</span></label>
+        <input type="text" class="fillin" data-key="ceo-retainer" placeholder="プラン 1 / 2 / 3" style="width:100%" />
+      </div>
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">非 CVML 予算（推定）</span><span class="lang en">Non-CVML budget (estimate)</span></label>
+        <input type="text" class="fillin" data-key="ceo-non-cvml" placeholder="AED" style="width:100%" />
+      </div>
+      <div style="grid-column:1 / -1">
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">合計 Year 1 予算承認額</span><span class="lang en">Total Year 1 approved budget</span></label>
+        <input type="text" class="fillin" data-key="ceo-total-budget" placeholder="AED" style="width:100%" />
+      </div>
+      <div style="grid-column:1 / -1">
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">交渉成果メモ</span><span class="lang en">Negotiation outcome notes</span></label>
+        <textarea class="fillin" data-key="ceo-negotiation-notes" placeholder="獲得した割引・追加スコープ・条件 / Discounts won, scope additions, terms…" style="width:100%; min-height:80px; resize:vertical; font-family:inherit"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Part 9 / 9.7 — Decisions Summary -->
+<section class="chapter" id="part9-summary">
+  <div class="part-label">Part 9</div>
+  <h2>
+    <span class="lang ja">9.7 Part 9 決定事項まとめ</span>
+    <span class="lang en">9.7 Part 9 Decisions Summary</span>
+  </h2>
+  <table class="dec-table">
+    <thead><tr><th>#</th><th><span class="lang ja">決定事項</span><span class="lang en">Decision</span></th><th><span class="lang ja">推奨</span><span class="lang en">Rec.</span></th><th><span class="lang ja">優先度</span><span class="lang en">Priority</span></th><th><span class="lang ja">状態</span><span class="lang en">Status</span></th></tr></thead>
+    <tbody>
+      <tr><td>9A</td><td><span class="lang ja">予算シナリオ</span><span class="lang en">Budget scenario</span></td><td><span class="lang ja">バランス（~76万 AED）</span><span class="lang en">Balanced (~760K AED)</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-9a" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>9B</td><td><span class="lang ja">リテイナープラン</span><span class="lang en">Retainer plan</span></td><td><span class="lang ja">プラン 2（標準）</span><span class="lang en">Plan 2 (Standard)</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-9b" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>9C</td><td><span class="lang ja">交渉戦略</span><span class="lang en">Negotiation strategy</span></td><td>B: <span class="lang ja">戦略型</span><span class="lang en">Strategic</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-9c" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div><!-- /part-band part-9 -->
+
+<div class="part-divider"><span>Part 10 · CVML チーム評価</span></div>
+
+<div class="part-band part-3">
+
+<!-- Part 10 / 10.1 — CVML Key Personnel -->
+<section class="chapter" id="cvml-team">
+  <div class="part-label">Part 10</div>
+  <h2>
+    <span class="lang ja">10.1 CVML 主要メンバー</span>
+    <span class="lang en">10.1 CVML Key Personnel</span>
+  </h2>
+  <p class="sub"><span class="lang ja">担当者・実績・チーム体制（外部資料では役割名のみ）</span><span class="lang en">Personnel, track record &amp; team structure (external materials use role names only)</span></p>
+
+  <div class="card">
+    <h3>CVML Managing Partner</h3>
+    <ul>
+      <li><span class="lang ja">DIFC ベース、AYUVA 案件のリードパートナー</span><span class="lang en">DIFC-based, lead partner on AYUVA</span></li>
+      <li><span class="lang ja">専門：コーポレートストラクチャリング、M&amp;A、フランチャイズ・小売</span><span class="lang en">Expertise: corporate structuring, M&amp;A, franchise &amp; retail</span></li>
+      <li><span class="lang ja">経験：UAE 法務 20+ 年、政府機関・SME・大企業案件</span><span class="lang en">20+ years UAE legal experience across government, SMEs, blue-chip clients</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="lang ja">CVML 主要担当（コンタクト）</span><span class="lang en">CVML primary contact</span></h3>
+    <ul>
+      <li><span class="lang ja">提案書発行担当・日常窓口</span><span class="lang en">Proposal issuer / daily liaison</span></li>
+      <li><span class="lang ja">構造設計・契約起案を直接担当</span><span class="lang en">Direct on structure design &amp; contract drafting</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Part 10 / 10.2 — Strengths vs Gaps -->
+<section class="chapter" id="cvml-strengths-gaps">
+  <div class="part-label">Part 10</div>
+  <h2>
+    <span class="lang ja">10.2 強み vs ギャップ</span>
+    <span class="lang en">10.2 Strengths vs Gaps</span>
+  </h2>
+
+  <div class="split">
+    <div class="col good">
+      <h4>✓ <span class="lang ja">強み</span><span class="lang en">Strengths</span></h4>
+      <ul>
+        <li><span class="lang ja">DIFC プレゼンス・SPV 構造実績</span><span class="lang en">DIFC presence &amp; SPV experience</span></li>
+        <li><span class="lang ja">SAFE ノート起案能力</span><span class="lang en">SAFE note drafting capability</span></li>
+        <li><span class="lang ja">クロスボーダー（GCC・MENA）案件経験</span><span class="lang en">Cross-border GCC / MENA experience</span></li>
+        <li><span class="lang ja">守秘性・透明な料金体系</span><span class="lang en">Confidentiality &amp; transparent pricing</span></li>
+        <li><span class="lang ja">多言語対応チーム</span><span class="lang en">Multilingual team</span></li>
+      </ul>
+    </div>
+    <div class="col bad">
+      <h4>✕ <span class="lang ja">ギャップ</span><span class="lang en">Gaps</span></h4>
+      <ul>
+        <li><span class="lang ja">ホテル管理契約（HMA）専門知識が限定的</span><span class="lang en">Limited Hotel Management Agreement (HMA) expertise</span></li>
+        <li><span class="lang ja">日本側 FIEA コーディネーション経験</span><span class="lang en">Japan FIEA coordination experience</span></li>
+        <li><span class="lang ja">大型不動産案件の深さ</span><span class="lang en">Real estate depth (large transactions)</span></li>
+        <li><span class="lang ja">投資家 KYC 大量処理キャパシティ</span><span class="lang en">Large-volume investor KYC processing</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Part 10 / 10.3 — Verification Checklist -->
+<section class="chapter" id="cvml-verification">
+  <div class="part-label">Part 10</div>
+  <h2>
+    <span class="lang ja">10.3 確認チェックリスト（CEO 議論前）</span>
+    <span class="lang en">10.3 Verification Checklist (Before CEO)</span>
+  </h2>
+
+  <div class="card">
+    <ul>
+      <li><span class="lang ja">☐ リードパートナーの背景・案件可用性</span><span class="lang en">☐ Lead partner background &amp; availability</span></li>
+      <li><span class="lang ja">☐ 類似案件のトラックレコード（不動産・金融・複数 SPV）</span><span class="lang en">☐ Similar-case track record (real estate, finance, multi-SPV)</span></li>
+      <li><span class="lang ja">☐ 日本側弁護士とのコーディネーション経験</span><span class="lang en">☐ Japan counsel coordination experience</span></li>
+      <li><span class="lang ja">☐ HMA 起案能力（または専門外部の紹介）</span><span class="lang en">☐ HMA drafting capability or external referral</span></li>
+      <li><span class="lang ja">☐ 投資家 KYC 処理キャパシティ</span><span class="lang en">☐ Investor KYC processing capacity</span></li>
+      <li><span class="lang ja">☐ 紛争解決の専門性</span><span class="lang en">☐ Dispute resolution expertise</span></li>
+      <li><span class="lang ja">☐ 緊急対応 SLA</span><span class="lang en">☐ Emergency response SLA</span></li>
+    </ul>
+  </div>
+</section>
+
+</div><!-- /part-band part-10 -->
+
+<div class="part-divider"><span>Part 11 · ギャップとリスク</span></div>
+
+<div class="part-band part-4">
+
+<!-- Part 11 / 11.1 — Out-of-Scope Categories -->
+<section class="chapter" id="risk-gaps">
+  <div class="part-label">Part 11</div>
+  <h2>
+    <span class="lang ja">11.1 6 つのスコープ外領域</span>
+    <span class="lang en">11.1 6 Out-of-Scope Categories</span>
+  </h2>
+  <p class="sub"><span class="lang ja">CVML には含まれない、別途対応が必要な領域</span><span class="lang en">Areas not in CVML scope — need separate provision</span></p>
+
+  <div class="pillars">
+    <div class="pillar"><div class="pillar-tag">①</div><h4><span class="lang ja">継続税務・コンプライアンス</span><span class="lang en">Ongoing tax / compliance</span></h4><p><span class="lang ja">月次経理、年次監査、VAT 申告 → 別途会計事務所</span><span class="lang en">Monthly accounting, annual audit, VAT filing → separate accounting firm</span></p></div>
+    <div class="pillar"><div class="pillar-tag">②</div><h4><span class="lang ja">専門弁護士</span><span class="lang en">Specialized counsel</span></h4><p><span class="lang ja">HMA、不動産、建設、知財</span><span class="lang en">HMA, real estate, construction, IP</span></p></div>
+    <div class="pillar"><div class="pillar-tag">③</div><h4><span class="lang ja">D&amp;O 保険</span><span class="lang en">D&amp;O insurance</span></h4><p><span class="lang ja">15–50K AED /entity /年</span><span class="lang en">15–50K AED per entity per year</span></p></div>
+    <div class="pillar"><div class="pillar-tag">④</div><h4><span class="lang ja">日本側弁護士コーディネーション</span><span class="lang en">Japan counsel coordination</span></h4><p><span class="lang ja">FIEA 書面意見・整合性確認</span><span class="lang en">FIEA written opinion &amp; alignment</span></p></div>
+    <div class="pillar"><div class="pillar-tag">⑤</div><h4><span class="lang ja">銀行関係構築</span><span class="lang en">Banking relationships</span></h4><p><span class="lang ja">CVML は「サポート」のみ → AYUVA が主導</span><span class="lang en">CVML provides "support" only → AYUVA drives</span></p></div>
+    <div class="pillar"><div class="pillar-tag">⑥</div><h4><span class="lang ja">将来の構造変更</span><span class="lang en">Future structural changes</span></h4><p><span class="lang ja">追加 SPV、再編、Exit 構造設計</span><span class="lang en">Additional SPVs, restructurings, exit design</span></p></div>
+  </div>
+</section>
+
+<!-- Part 11 / 11.2 — Risk Matrix -->
+<section class="chapter" id="risk-matrix">
+  <div class="part-label">Part 11</div>
+  <h2>
+    <span class="lang ja">11.2 リスクマトリクス</span>
+    <span class="lang en">11.2 Risk Matrix</span>
+  </h2>
+
+  <table class="alt-table">
+    <thead><tr>
+      <th><span class="lang ja">リスク</span><span class="lang en">Risk</span></th>
+      <th><span class="lang ja">影響</span><span class="lang en">Impact</span></th>
+      <th><span class="lang ja">確率</span><span class="lang en">Probability</span></th>
+      <th><span class="lang ja">ミティゲーション</span><span class="lang en">Mitigation</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="lang ja">銀行口座開設遅延</span><span class="lang en">Bank account delays</span></td><td><span class="lang ja">高</span><span class="lang en">High</span></td><td><span class="lang ja">高</span><span class="lang en">High</span></td><td><span class="lang ja">早期申請、複数銀行に並行</span><span class="lang en">Early apps + multi-bank parallel</span></td></tr>
+      <tr><td><span class="lang ja">投資家 KYC 拒否</span><span class="lang en">Investor KYC rejection</span></td><td><span class="lang ja">中</span><span class="lang en">Medium</span></td><td><span class="lang ja">中</span><span class="lang en">Medium</span></td><td><span class="lang ja">事前ガイダンス、KYC パック整備</span><span class="lang en">Pre-guidance, KYC pack ready</span></td></tr>
+      <tr><td><span class="lang ja">49 人ルール違反</span><span class="lang en">49-rule violation</span></td><td><span class="lang ja">極大</span><span class="lang en">Extreme</span></td><td><span class="lang ja">低</span><span class="lang en">Low</span></td><td><span class="lang ja">勧誘ログ厳格管理、Music Securities 検討</span><span class="lang en">Strict solicitation log + Music Securities option</span></td></tr>
+      <tr><td><span class="lang ja">想定外コスト</span><span class="lang en">Surprise costs</span></td><td><span class="lang ja">中</span><span class="lang en">Medium</span></td><td><span class="lang ja">高</span><span class="lang en">High</span></td><td><span class="lang ja">スコープ明確化、契約前精査</span><span class="lang en">Clear scope; pre-contract review</span></td></tr>
+      <tr><td><span class="lang ja">FIEA 解釈の齟齬</span><span class="lang en">FIEA interpretation gap</span></td><td><span class="lang ja">高</span><span class="lang en">High</span></td><td><span class="lang ja">中</span><span class="lang en">Medium</span></td><td><span class="lang ja">日本側弁護士書面意見</span><span class="lang en">Written legal opinion from Japan counsel</span></td></tr>
+      <tr><td><span class="lang ja">PT Bamboo Lab 構造未確定</span><span class="lang en">PT Bamboo Lab structure unfinalized</span></td><td><span class="lang ja">中</span><span class="lang en">Medium</span></td><td><span class="lang ja">高</span><span class="lang en">High</span></td><td><span class="lang ja">事前ミーティング・整合性確認</span><span class="lang en">Pre-meeting alignment</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Part 11 / 11.3 — Pre-Signing Items -->
+<section class="chapter" id="risk-pre-signing">
+  <div class="part-label">Part 11</div>
+  <h2>
+    <span class="lang ja">11.3 契約前確認事項</span>
+    <span class="lang en">11.3 Pre-Signing Items</span>
+  </h2>
+
+  <div class="callout warn">
+    <h3><span class="lang ja">CVML 契約締結前に確認</span><span class="lang en">Before signing the CVML engagement</span></h3>
+    <p style="margin:0 0 6px"><b><span class="lang ja">高優先度：</span><span class="lang en">High priority:</span></b></p>
+    <ul>
+      <li><span class="lang ja">詳細スコープ明文化（追加費用回避）</span><span class="lang en">Detailed scope clarification (avoid surprise fees)</span></li>
+      <li><span class="lang ja">リテイナー時間繰越条件</span><span class="lang en">Retainer hour rollover terms</span></li>
+      <li><span class="lang ja">追加時間料金</span><span class="lang en">Additional-time hourly rate</span></li>
+      <li><span class="lang ja">HMA 起案 or 紹介の見積</span><span class="lang en">HMA drafting or referral quote</span></li>
+      <li><span class="lang ja">投資家 KYC 処理単価</span><span class="lang en">Per-investor KYC processing rate</span></li>
+    </ul>
+    <p style="margin:8px 0 6px"><b><span class="lang ja">中優先度：</span><span class="lang en">Medium priority:</span></b></p>
+    <ul>
+      <li><span class="lang ja">緊急対応 SLA</span><span class="lang en">Emergency response SLA</span></li>
+      <li><span class="lang ja">チーム移行（リードパートナー変更時）</span><span class="lang en">Team continuity (if lead partner changes)</span></li>
+      <li><span class="lang ja">将来 SPV 設立の割引</span><span class="lang en">Discount for future SPV setups</span></li>
+      <li><span class="lang ja">紛争責任分担</span><span class="lang en">Liability split for disputes</span></li>
+      <li><span class="lang ja">守秘義務範囲</span><span class="lang en">Confidentiality scope</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Part 11 / 11.4 — Mitigation Actions -->
+<section class="chapter" id="risk-mitigation">
+  <div class="part-label">Part 11</div>
+  <h2>
+    <span class="lang ja">11.4 ミティゲーションアクション</span>
+    <span class="lang en">11.4 Mitigation Action List</span>
+  </h2>
+
+  <div class="card">
+    <ul>
+      <li><span class="lang ja">☐ 別途会計事務所の選定（CVML 紹介）</span><span class="lang en">☐ Select separate accounting firm (CVML referral)</span></li>
+      <li><span class="lang ja">☐ D&amp;O 保険ブローカー紹介</span><span class="lang en">☐ D&amp;O insurance broker introduction</span></li>
+      <li><span class="lang ja">☐ 専門弁護士紹介（HMA、不動産、建設）</span><span class="lang en">☐ Specialized counsel referrals (HMA, real estate, construction)</span></li>
+      <li><span class="lang ja">☐ 日本側弁護士直接コーディネーション</span><span class="lang en">☐ Japan counsel direct coordination</span></li>
+      <li><span class="lang ja">☐ 投資家オンボーディング社内能力構築</span><span class="lang en">☐ Build investor-onboarding internal capability</span></li>
+      <li><span class="lang ja">☐ 全コストスプレッドシート（CVML + 非 CVML）</span><span class="lang en">☐ All-cost spreadsheet (CVML + non-CVML)</span></li>
+      <li><span class="lang ja">☐ CEO の総予算承認（契約前）</span><span class="lang en">☐ CEO total-budget approval before contract signing</span></li>
+    </ul>
+  </div>
+</section>
+
+</div><!-- /part-band part-11 -->
+
+<div class="part-divider"><span>Part 12 · 最終サマリー＆意思決定チェックリスト</span></div>
+
+<div class="part-band part-5">
+
+<!-- Part 12 / 12.1 — Master Decisions Log -->
+<section class="chapter" id="master-decisions">
+  <div class="part-label">Part 12</div>
+  <h2>
+    <span class="lang ja">12.1 全決定事項マスターログ</span>
+    <span class="lang en">12.1 Master Decisions Log</span>
+  </h2>
+  <p class="sub"><span class="lang ja">Part 3–9 の全 18 決定事項</span><span class="lang en">All 18 decisions across Parts 3–9</span></p>
+
+  <table class="dec-table">
+    <thead><tr><th>#</th><th><span class="lang ja">決定事項</span><span class="lang en">Decision</span></th><th><span class="lang ja">推奨</span><span class="lang en">Rec.</span></th><th><span class="lang ja">優先度</span><span class="lang en">Priority</span></th><th><span class="lang ja">状態</span><span class="lang en">Status</span></th></tr></thead>
+    <tbody>
+      <tr><td>3A</td><td><span class="lang ja">投資会社 管轄</span><span class="lang en">Investment Co jurisdiction</span></td><td>DIFC</td><td class="pri-cell"><span class="pri-badge red">RED</span></td><td><select class="dec-status" data-key="dec-3a" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>3B</td><td><span class="lang ja">議決権構造</span><span class="lang en">Voting structure</span></td><td><span class="lang ja">無議決権優先株式</span><span class="lang en">Non-voting preferred</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td><td><select class="dec-status" data-key="dec-3b" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>3C</td><td><span class="lang ja">Phase × Tier マッピング</span><span class="lang en">Phase × Tier mapping</span></td><td>Model A + <span class="lang ja">サイドレター</span><span class="lang en">side letters</span></td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td><td><select class="dec-status" data-key="dec-3c" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>3D</td><td><span class="lang ja">FIEA 戦略</span><span class="lang en">FIEA strategy</span></td><td><span class="lang ja">Path C / Music Securities ハイブリッド</span><span class="lang en">Path C / Music Securities hybrid</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td><td><select class="dec-status" data-key="dec-3d" data-status="lawyer"><option value="confirmed">確定</option><option value="lawyer" selected>弁護士確認</option><option value="hold">保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>4A</td><td><span class="lang ja">PMC 管轄</span><span class="lang en">PMC jurisdiction</span></td><td>DED</td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td><td><select class="dec-status" data-key="dec-4a" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>4B</td><td><span class="lang ja">PT Bamboo 15% 配置</span><span class="lang en">PT Bamboo 15% placement</span></td><td><span class="lang ja">Project 1 SPV のみ</span><span class="lang en">Project 1 SPV only</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td><td><select class="dec-status" data-key="dec-4b" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>4C</td><td><span class="lang ja">PMC 手数料</span><span class="lang en">PMC fee</span></td><td>5–10% <span class="lang ja">範囲</span><span class="lang en">range</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-4c" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>5A</td><td><span class="lang ja">運営モデル</span><span class="lang en">Operating model</span></td><td><span class="lang ja">ハイブリッド</span><span class="lang en">Hybrid</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-5a" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>5B</td><td><span class="lang ja">AMC 管轄</span><span class="lang en">AMC jurisdiction</span></td><td>DED</td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td><td><select class="dec-status" data-key="dec-5b" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>6A-pre</td><td><span class="lang ja">Lease vs Buy</span><span class="lang en">Lease vs Buy</span></td><td>CEO</td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-6apre" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>6A</td><td><span class="lang ja">SPV 管轄</span><span class="lang en">SPV jurisdiction</span></td><td>DIFC SPC / DED</td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td><td><select class="dec-status" data-key="dec-6a" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>6B</td><td><span class="lang ja">SPV 数</span><span class="lang en">Number of SPVs</span></td><td>SPV1 only</td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-6b" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>6C</td><td><span class="lang ja">SPV 所有</span><span class="lang en">SPV ownership</span></td><td>Investment Co 100%</td><td class="pri-cell"><span class="pri-badge red">RED</span></td><td><select class="dec-status" data-key="dec-6c" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>7A</td><td><span class="lang ja">登録戦略</span><span class="lang en">Registration strategy</span></td><td><span class="lang ja">フェーズ登録</span><span class="lang en">Phased</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-7a" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>7A-bonus</td><td><span class="lang ja">投資会社 0% 税</span><span class="lang en">Investment Co 0%</span></td><td>QFZP</td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td><td><select class="dec-status" data-key="dec-7abonus" data-status="dubai"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold">保留</option><option value="dubai" selected>ドバイ側確認</option></select></td></tr>
+      <tr><td>7B</td><td><span class="lang ja">ビザ</span><span class="lang en">Visa</span></td><td>HOLD</td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-7b" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>9A</td><td><span class="lang ja">予算シナリオ</span><span class="lang en">Budget scenario</span></td><td><span class="lang ja">バランス</span><span class="lang en">Balanced</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-9a" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>9B</td><td><span class="lang ja">リテイナープラン</span><span class="lang en">Retainer plan</span></td><td><span class="lang ja">プラン 2</span><span class="lang en">Plan 2</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-9b" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+      <tr><td>9C</td><td><span class="lang ja">交渉戦略</span><span class="lang en">Negotiation strategy</span></td><td>B: <span class="lang ja">戦略型</span><span class="lang en">Strategic</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td><td><select class="dec-status" data-key="dec-9c" data-status="hold"><option value="confirmed">確定</option><option value="lawyer">弁護士確認</option><option value="hold" selected>保留</option><option value="dubai">ドバイ側確認</option></select></td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:12.5px; color:var(--muted); margin-top:10px"><span class="lang ja">優先度凡例：<span class="pri-badge red">RED</span> 資金調達に直接影響 ／ <span class="pri-badge amber">AMBER</span> 後変更困難 ／ <span class="pri-badge yellow">YELLOW</span> 柔軟・後決定可</span><span class="lang en">Priority legend: <span class="pri-badge red">RED</span> directly affects fundraising / <span class="pri-badge amber">AMBER</span> hard to change later / <span class="pri-badge yellow">YELLOW</span> flexible</span></p>
+</section>
+
+<!-- Part 12 / 12.2 — Action Items by Timeline -->
+<section class="chapter" id="action-items">
+  <div class="part-label">Part 12</div>
+  <h2>
+    <span class="lang ja">12.2 アクションアイテム（タイムライン別）</span>
+    <span class="lang en">12.2 Action Items by Timeline</span>
+  </h2>
+
+  <div class="callout warn">
+    <h3><span class="lang ja">今週着手</span><span class="lang en">Start this week</span></h3>
+    <ul>
+      <li><span class="lang ja">CEO プレゼン資料の最終化（本資料 + 決定マトリクス）</span><span class="lang en">Finalize CEO presentation (this doc + decisions matrix)</span></li>
+      <li><span class="lang ja">PT Bamboo Lab とのアライメントコール</span><span class="lang en">PT Bamboo Lab alignment call</span></li>
+      <li><span class="lang ja">Music Securities への問合せ（FIEA 代替路線）</span><span class="lang en">Reach out to Music Securities (FIEA alternative path)</span></li>
+      <li><span class="lang ja">CVML への確認質問リスト送付（QFZP・HMA・KYC 等）</span><span class="lang en">Send CVML clarification questions (QFZP, HMA, KYC, etc.)</span></li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <h3><span class="lang ja">2 週間以内</span><span class="lang en">Within 2 weeks</span></h3>
+    <ul>
+      <li><span class="lang ja">日本側弁護士の正式起用（FIEA 書面意見）</span><span class="lang en">Engage Japanese counsel (FIEA written opinion)</span></li>
+      <li><span class="lang ja">ブローカー候補からの正式見積取得</span><span class="lang en">Get formal broker-dealer quotes</span></li>
+      <li><span class="lang ja">銀行口座開設プロセス開始（複数銀行に並行）</span><span class="lang en">Kick off bank account opening (multi-bank parallel)</span></li>
+      <li><span class="lang ja">書類収集の本格開始</span><span class="lang en">Begin document collection in earnest</span></li>
+    </ul>
+  </div>
+
+  <div class="callout info">
+    <h3><span class="lang ja">1 ヶ月以内</span><span class="lang en">Within 1 month</span></h3>
+    <ul>
+      <li><span class="lang ja">Lease vs Buy 決定（立地確定と同時）</span><span class="lang en">Lease vs Buy call (with location)</span></li>
+      <li><span class="lang ja">管轄区域の最終確定</span><span class="lang en">Lock all jurisdictions</span></li>
+      <li><span class="lang ja">投資家ターゲットリスト最終化</span><span class="lang en">Finalize investor target list</span></li>
+    </ul>
+  </div>
+
+  <div class="callout gold">
+    <h3><span class="lang ja">2–3 ヶ月以内</span><span class="lang en">Within 2–3 months</span></h3>
+    <ul>
+      <li><span class="lang ja">全エンティティ設立完了</span><span class="lang en">All entities set up</span></li>
+      <li><span class="lang ja">銀行口座すべて開設</span><span class="lang en">All bank accounts opened</span></li>
+      <li><span class="lang ja">Phase 1 投資家オンボーディング開始</span><span class="lang en">Phase 1 investor onboarding begins</span></li>
+      <li><span class="lang ja">AYUVA Project 1 立地確定</span><span class="lang en">AYUVA Project 1 location finalized</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Part 12 / 12.3 — Implementation Timeline -->
+<section class="chapter" id="implementation-timeline">
+  <div class="part-label">Part 12</div>
+  <h2>
+    <span class="lang ja">12.3 実装タイムライン</span>
+    <span class="lang en">12.3 Implementation Timeline</span>
+  </h2>
+
+  <div class="card">
+    <pre style="font-family:'Inter',monospace; font-size:12px; line-height:1.7; margin:0; color:var(--ink-soft); overflow-x:auto">
+月 1   月 2   月 3   月 4   月 5   月 6
+├ <span class="lang ja">書類準備</span><span class="lang en">Doc prep</span> ┤
+       ├ <span class="lang ja">エンティティ設立</span><span class="lang en">Entity setup</span> ─┤
+              ├ <span class="lang ja">銀行口座</span><span class="lang en">Bank accounts</span> ────┤
+                     ├ <span class="lang ja">投資家準備</span><span class="lang en">Investor prep</span> ┤
+                            ├ <span class="lang ja">Phase 1 開始</span><span class="lang en">Phase 1 start</span> →</pre>
+  </div>
+</section>
+
+<!-- Part 12 / 12.4 — CEO Decision Checklist -->
+<section class="chapter" id="ceo-checklist">
+  <div class="part-label">Part 12</div>
+  <h2>
+    <span class="lang ja">12.4 CEO 決定チェックリスト</span>
+    <span class="lang en">12.4 CEO Decision Checklist</span>
+  </h2>
+  <p class="sub"><span class="lang ja">CEO 議論で確定する 12 項目</span><span class="lang en">12 items to lock with CEO</span></p>
+
+  <table class="alt-table">
+    <thead><tr>
+      <th>#</th>
+      <th><span class="lang ja">項目</span><span class="lang en">Item</span></th>
+      <th><span class="lang ja">優先度</span><span class="lang en">Priority</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="lang ja">Investment Co 管轄（DIFC）承認</span><span class="lang en">Investment Co jurisdiction (DIFC)</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td></tr>
+      <tr><td>2</td><td><span class="lang ja">議決権構造（無議決権優先株式）承認</span><span class="lang en">Voting structure (non-voting preferred)</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td></tr>
+      <tr><td>3</td><td><span class="lang ja">FIEA 戦略（Path C / Music Securities / ハイブリッド）</span><span class="lang en">FIEA strategy (Path C / Music Securities / hybrid)</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td></tr>
+      <tr><td>4</td><td><span class="lang ja">PT Bamboo Lab 15% 配置（Option 3）</span><span class="lang en">PT Bamboo Lab 15% placement (Option 3)</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td></tr>
+      <tr><td>5</td><td><span class="lang ja">SPV 所有構造（Investment Co 100%）</span><span class="lang en">SPV ownership (Investment Co 100%)</span></td><td class="pri-cell"><span class="pri-badge red">RED</span></td></tr>
+      <tr><td>6</td><td><span class="lang ja">PMC / AMC 管轄（DED）</span><span class="lang en">PMC / AMC jurisdiction (DED)</span></td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td></tr>
+      <tr><td>7</td><td><span class="lang ja">Phase × Tier マッピング（Model A）</span><span class="lang en">Phase × Tier mapping (Model A)</span></td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td></tr>
+      <tr><td>8</td><td><span class="lang ja">QFZP 0% 税率の追求</span><span class="lang en">Pursue QFZP 0% tax</span></td><td class="pri-cell"><span class="pri-badge amber">AMBER</span></td></tr>
+      <tr><td>9</td><td><span class="lang ja">予算シナリオ（保守 / バランス / 包括）</span><span class="lang en">Budget scenario (Conservative / Balanced / Comprehensive)</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td></tr>
+      <tr><td>10</td><td><span class="lang ja">リテイナープラン</span><span class="lang en">Retainer plan</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td></tr>
+      <tr><td>11</td><td><span class="lang ja">交渉戦略</span><span class="lang en">Negotiation strategy</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td></tr>
+      <tr><td>12</td><td><span class="lang ja">AYUVA Project 1 立地 + Lease vs Buy</span><span class="lang en">AYUVA Project 1 location + Lease vs Buy</span></td><td class="pri-cell"><span class="pri-badge yellow">YELLOW</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Part 12 / 12.5 — Recommended Next Steps -->
+<section class="chapter" id="next-steps">
+  <div class="part-label">Part 12</div>
+  <h2>
+    <span class="lang ja">12.5 推奨次ステップ</span>
+    <span class="lang en">12.5 Recommended Next Steps</span>
+  </h2>
+
+  <ol class="steps">
+    <li data-n="1"><span class="lang ja">日本側弁護士の正式起用（FIEA 書面意見）</span><span class="lang en">Formally engage Japanese counsel (FIEA written opinion)</span></li>
+    <li data-n="2"><span class="lang ja">CVML との交渉開始（確定済み決定事項を基に）</span><span class="lang en">Begin CVML negotiation (based on locked decisions)</span></li>
+    <li data-n="3"><span class="lang ja">PT Bamboo Lab とアライメントミーティング</span><span class="lang en">PT Bamboo Lab alignment meeting</span></li>
+    <li data-n="4"><span class="lang ja">書類収集の本格開始</span><span class="lang en">Begin document collection in earnest</span></li>
+    <li data-n="5"><span class="lang ja">Music Securities 問合せ・見積取得</span><span class="lang en">Music Securities outreach + quote</span></li>
+    <li data-n="6"><span class="lang ja">銀行候補選定・接触</span><span class="lang en">Bank candidate selection &amp; outreach</span></li>
+    <li data-n="7"><span class="lang ja">並行：立地確定 ／ 投資家 KYC プロセス整備</span><span class="lang en">Parallel: location finalization / investor KYC process setup</span></li>
+  </ol>
+</section>
+
+<!-- Part 12 / 12.6 — Handoff Resources -->
+<section class="chapter" id="handoff">
+  <div class="part-label">Part 12</div>
+  <h2>
+    <span class="lang ja">12.6 ハンドオフリソース</span>
+    <span class="lang en">12.6 Handoff Resources</span>
+  </h2>
+
+  <div class="card">
+    <ul>
+      <li><span class="lang ja">CVML オリジナル提案書 PDF</span><span class="lang en">CVML original proposal PDF</span></li>
+      <li><span class="lang ja">Baru 検討プロセスハンドオフレポート</span><span class="lang en">Baru's review-process handoff report</span></li>
+      <li><span class="lang ja">本資料（HTML 版・<a href="https://github.com/AYUVAUAE/ayuva-fundraising-board" style="color:var(--accent-deep)">GitHub</a>）</span><span class="lang en">This document (HTML — <a href="https://github.com/AYUVAUAE/ayuva-fundraising-board" style="color:var(--accent-deep)">GitHub</a>)</span></li>
+      <li><span class="lang ja">ミーティングノート</span><span class="lang en">Meeting notes</span></li>
+      <li><span class="lang ja">弁護士・パートナー連絡先リスト</span><span class="lang en">Counsel / partner contact list</span></li>
+    </ul>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px">
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">最終更新日</span><span class="lang en">Last updated</span></label>
+        <input type="text" class="fillin" data-key="last-updated" placeholder="2026-05-04" style="width:100%" />
+      </div>
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">担当者</span><span class="lang en">Responsible</span></label>
+        <input type="text" class="fillin" data-key="responsible" placeholder="Baru" style="width:100%" />
+      </div>
+      <div>
+        <label style="display:block; font-size:12.5px; font-weight:600; margin-bottom:4px"><span class="lang ja">レビュアー</span><span class="lang en">Reviewer</span></label>
+        <input type="text" class="fillin" data-key="reviewer" placeholder="CEO" style="width:100%" />
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /part-band part-12 -->
 
 <footer>
   <span>AYUVA · Board Update — UAE Naming &amp; Corporate Structure</span>
