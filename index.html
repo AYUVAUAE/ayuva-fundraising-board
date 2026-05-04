@@ -2967,14 +2967,14 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           <tr class="info-detail-row" id="info-share-class">
             <td colspan="4">
               <div class="info-card">
-                <h5>株式クラス（Share Class）</h5>
-                <p>各投資家が保有する <b>株式の種類</b>。会社の定款（MoA）に書く中核要素。</p>
+                <h5><span class="lang ja">株式クラス（Share Class）</span><span class="lang en">Share Class</span></h5>
+                <p><span class="lang ja">各投資家が保有する <b>株式の種類</b>。会社の定款（MoA）に書く中核要素。</span><span class="lang en">The <b>type of share</b> each investor holds. Core element written into the company's MoA.</span></p>
                 <ul>
-                  <li><b>Model A 採用：</b>Phase 1 内の全員が同一の「Phase 1 優先株式」を保有</li>
-                  <li><b>FIEA 要件：</b>フェーズごとに異なる株式クラスを発行することで「実質的に異なる証券」要件を満たす（Phase 1 / Phase 2 / Phase 3 の 3 クラス）</li>
-                  <li><b>変更不可：</b>Model A の前提により、フェーズ単位 1 クラスに固定</li>
+                  <li><span class="lang ja"><b>Model A 採用：</b>Phase 1 内の全員が同一の「Phase 1 優先株式」を保有</span><span class="lang en"><b>Model A:</b> all Phase 1 investors hold the same "Phase 1 Preferred"</span></li>
+                  <li><span class="lang ja"><b>FIEA 要件：</b>フェーズごとに異なる株式クラスを発行することで「実質的に異なる証券」要件を満たす（Phase 1 / Phase 2 / Phase 3 の 3 クラス）</span><span class="lang en"><b>FIEA requirement:</b> issuing a different share class per phase satisfies the "materially different securities" test (3 classes total: Phase 1 / 2 / 3)</span></li>
+                  <li><span class="lang ja"><b>変更不可：</b>Model A の前提により、フェーズ単位 1 クラスに固定</span><span class="lang en"><b>Locked:</b> per Model A, one class per phase, fixed</span></li>
                 </ul>
-                <p><span class="info-tag rec">推奨</span>このセルは設計上のロック項目。差別化はサイドレター行で対応。</p>
+                <p><span class="info-tag rec"><span class="lang ja">推奨</span><span class="lang en">Rec.</span></span><span class="lang ja">このセルは設計上のロック項目。差別化はサイドレター行で対応。</span><span class="lang en">This cell is a design lock-in. Differentiation handled in the side-letter row.</span></p>
               </div>
             </td>
           </tr>
@@ -2985,14 +2985,14 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           <tr class="info-detail-row" id="info-dividend">
             <td colspan="4">
               <div class="info-card">
-                <h5>配当（Dividend）</h5>
-                <p>投資家への <b>定期的な利益分配</b>。優先株式の経済的中核。</p>
+                <h5><span class="lang ja">配当（Dividend）</span><span class="lang en">Dividend</span></h5>
+                <p><span class="lang ja">投資家への <b>定期的な利益分配</b>。優先株式の経済的中核。</span><span class="lang en">The <b>periodic profit distribution</b> to investors. Economic core of preferred shares.</span></p>
                 <ul>
-                  <li><b>共通（フェーズ単位）：</b>Phase 1 の全員が同一配当条件 → FIEA 上クリーン、運用シンプル</li>
-                  <li><b>ティア別：</b>チケット額に応じて差別化 → 実質的にサブクラス化、FIEA リスク</li>
-                  <li><b>個別交渉：</b>投資家ごとに条件 → 最高 FIEA リスク、Cap Table 管理が複雑化</li>
+                  <li><span class="lang ja"><b>共通（フェーズ単位）：</b>Phase 1 の全員が同一配当条件 → FIEA 上クリーン、運用シンプル</span><span class="lang en"><b>Common (phase-level):</b> all Phase 1 investors get the same dividend → FIEA-clean, operationally simple</span></li>
+                  <li><span class="lang ja"><b>ティア別：</b>チケット額に応じて差別化 → 実質的にサブクラス化、FIEA リスク</span><span class="lang en"><b>Per-tier:</b> differentiate by ticket size → effectively creates sub-classes, FIEA risk</span></li>
+                  <li><span class="lang ja"><b>個別交渉：</b>投資家ごとに条件 → 最高 FIEA リスク、Cap Table 管理が複雑化</span><span class="lang en"><b>Individually negotiated:</b> custom per investor → maximum FIEA risk, complicated cap-table</span></li>
                 </ul>
-                <p><span class="info-tag rec">推奨</span><b>共通（フェーズ単位）</b>。フェーズ間で配当率を変えることで「実質的に異なる証券」を実現。</p>
+                <p><span class="info-tag rec"><span class="lang ja">推奨</span><span class="lang en">Rec.</span></span><span class="lang ja"><b>共通（フェーズ単位）</b>。フェーズ間で配当率を変えることで「実質的に異なる証券」を実現。</span><span class="lang en"><b>Common (phase-level)</b>. Vary the dividend rate <i>between</i> phases to achieve "materially different securities".</span></p>
               </div>
             </td>
           </tr>
@@ -3003,15 +3003,15 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           <tr class="info-detail-row" id="info-liquidation">
             <td colspan="4">
               <div class="info-card">
-                <h5>清算優先順位（Liquidation Preference）</h5>
-                <p>会社売却・清算時の <b>払い戻し順位</b>。Exit シナリオでの経済的保護条項。</p>
+                <h5><span class="lang ja">清算優先順位（Liquidation Preference）</span><span class="lang en">Liquidation Preference</span></h5>
+                <p><span class="lang ja">会社売却・清算時の <b>払い戻し順位</b>。Exit シナリオでの経済的保護条項。</span><span class="lang en">The <b>payout priority</b> on company sale or liquidation. Economic protection at exit.</span></p>
                 <ul>
-                  <li><b>例：1.5x liquidation preference</b> = 投資額の 1.5 倍を普通株主より先に回収</li>
-                  <li><b>共通（フェーズ単位）：</b>Phase 内で同一の倍率 → FIEA クリーン</li>
-                  <li><b>ティア別：</b>サブクラス化、FIEA リスク</li>
-                  <li><b>個別交渉：</b>最高リスク</li>
+                  <li><span class="lang ja"><b>例：1.5x liquidation preference</b> = 投資額の 1.5 倍を普通株主より先に回収</span><span class="lang en"><b>Example:</b> 1.5× liquidation preference = recover 1.5× invested capital before common shareholders</span></li>
+                  <li><span class="lang ja"><b>共通（フェーズ単位）：</b>Phase 内で同一の倍率 → FIEA クリーン</span><span class="lang en"><b>Common (phase-level):</b> same multiple within a phase → FIEA-clean</span></li>
+                  <li><span class="lang ja"><b>ティア別：</b>サブクラス化、FIEA リスク</span><span class="lang en"><b>Per-tier:</b> creates sub-classes → FIEA risk</span></li>
+                  <li><span class="lang ja"><b>個別交渉：</b>最高リスク</span><span class="lang en"><b>Individually negotiated:</b> highest risk</span></li>
                 </ul>
-                <p><span class="info-tag rec">推奨</span><b>共通（フェーズ単位）</b>。配当と同じ論理。</p>
+                <p><span class="info-tag rec"><span class="lang ja">推奨</span><span class="lang en">Rec.</span></span><span class="lang ja"><b>共通（フェーズ単位）</b>。配当と同じ論理。</span><span class="lang en"><b>Common (phase-level)</b>. Same logic as dividend.</span></p>
               </div>
             </td>
           </tr>
@@ -3024,15 +3024,15 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           <tr class="info-detail-row" id="info-sideletter">
             <td colspan="4">
               <div class="info-card">
-                <h5>サイドレター（Side Letter）</h5>
-                <p>株主契約とは <b>別の個別契約</b>。特定の投資家へ追加便益を提供する仕組み。</p>
+                <h5><span class="lang ja">サイドレター（Side Letter）</span><span class="lang en">Side Letter</span></h5>
+                <p><span class="lang ja">株主契約とは <b>別の個別契約</b>。特定の投資家へ追加便益を提供する仕組み。</span><span class="lang en">A <b>separate individual contract</b> from the shareholders' agreement. Mechanism for granting extra benefits to specific investors.</span></p>
                 <ul>
-                  <li><b>法的性質：</b>「証券」ではない個別契約 → FIEA の株式クラス問題を引き起こさない</li>
-                  <li><b>用途：</b>大型投資家（古竹）への VIP 待遇を、新株式クラスを作らずに実現</li>
-                  <li><b>典型的な内容：</b>取締役オブザーバー席、四半期ブリーフィング、共同投資権、優先情報アクセス等</li>
+                  <li><span class="lang ja"><b>法的性質：</b>「証券」ではない個別契約 → FIEA の株式クラス問題を引き起こさない</span><span class="lang en"><b>Legal nature:</b> not a "security" — an individual contract → doesn't trigger FIEA share-class issues</span></li>
+                  <li><span class="lang ja"><b>用途：</b>大型投資家（古竹）への VIP 待遇を、新株式クラスを作らずに実現</span><span class="lang en"><b>Use case:</b> deliver VIP treatment to large investors (古竹) without creating new share classes</span></li>
+                  <li><span class="lang ja"><b>典型的な内容：</b>取締役オブザーバー席、四半期ブリーフィング、共同投資権、優先情報アクセス等</span><span class="lang en"><b>Typical contents:</b> board observer seat, quarterly briefings, co-invest rights, priority info access, etc.</span></li>
                 </ul>
-                <p><span class="info-tag rec">推奨</span>古竹 = 取締役オブザーバー + アドバイザリー／林・森 = 四半期ブリーフィング／芽・根 = なし</p>
-                <p style="font-size:12px; color:var(--muted)">⚠ 与えすぎると <b>ガバナンス・運営負担</b> が増加。バランスが鍵。</p>
+                <p><span class="info-tag rec"><span class="lang ja">推奨</span><span class="lang en">Rec.</span></span><span class="lang ja">古竹 = 取締役オブザーバー + アドバイザリー／林・森 = 四半期ブリーフィング／芽・根 = なし</span><span class="lang en">古竹 = board observer + advisory / 林・森 = quarterly briefing / 芽・根 = none</span></p>
+                <p style="font-size:12px; color:var(--muted)">⚠ <span class="lang ja">与えすぎると <b>ガバナンス・運営負担</b> が増加。バランスが鍵。</span><span class="lang en">Overgranting increases <b>governance &amp; operational burden</b>. Balance is key.</span></p>
               </div>
             </td>
           </tr>
@@ -3045,16 +3045,16 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           <tr class="info-detail-row" id="info-info-rights">
             <td colspan="4">
               <div class="info-card">
-                <h5>情報権（Information Rights）</h5>
-                <p>投資家への <b>情報開示の頻度・範囲</b>。透明性と運営負担のトレードオフ。</p>
+                <h5><span class="lang ja">情報権（Information Rights）</span><span class="lang en">Information Rights</span></h5>
+                <p><span class="lang ja">投資家への <b>情報開示の頻度・範囲</b>。透明性と運営負担のトレードオフ。</span><span class="lang en"><b>Frequency &amp; scope</b> of information disclosure to investors. Transparency vs operational burden trade-off.</span></p>
                 <ul>
-                  <li><b>月次のみ：</b>基本的な財務報告（KPI、売上、コスト、キャッシュ）</li>
-                  <li><b>月次 + 四半期：</b>詳細財務 + 戦略アップデート（市場分析、ロードマップ）</li>
-                  <li><b>月次 + 四半期 + 随時：</b>重要事象（資金調達、契約締結、リスク事案）の即時通知</li>
-                  <li><b>完全アクセス：</b>社内データルームへの直接アクセス（高負担）</li>
+                  <li><span class="lang ja"><b>月次のみ：</b>基本的な財務報告（KPI、売上、コスト、キャッシュ）</span><span class="lang en"><b>Monthly only:</b> basic financial reporting (KPIs, revenue, costs, cash)</span></li>
+                  <li><span class="lang ja"><b>月次 + 四半期：</b>詳細財務 + 戦略アップデート（市場分析、ロードマップ）</span><span class="lang en"><b>Monthly + quarterly:</b> detailed financials + strategy updates (market analysis, roadmap)</span></li>
+                  <li><span class="lang ja"><b>月次 + 四半期 + 随時：</b>重要事象（資金調達、契約締結、リスク事案）の即時通知</span><span class="lang en"><b>Monthly + quarterly + ad-hoc:</b> immediate notice on material events (financing, contracts, risks)</span></li>
+                  <li><span class="lang ja"><b>完全アクセス：</b>社内データルームへの直接アクセス（高負担）</span><span class="lang en"><b>Full access:</b> direct access to internal data room (high burden)</span></li>
                 </ul>
-                <p><span class="info-tag rec">推奨</span>古竹 = 月次+四半期+随時／林・森 = 月次+四半期／芽・根 = 月次のみ</p>
-                <p style="font-size:12px; color:var(--muted)">⚠ ティアに応じて段階的に。レポート作成は実工数が発生。</p>
+                <p><span class="info-tag rec"><span class="lang ja">推奨</span><span class="lang en">Rec.</span></span><span class="lang ja">古竹 = 月次+四半期+随時／林・森 = 月次+四半期／芽・根 = 月次のみ</span><span class="lang en">古竹 = monthly + quarterly + ad-hoc / 林・森 = monthly + quarterly / 芽・根 = monthly only</span></p>
+                <p style="font-size:12px; color:var(--muted)">⚠ <span class="lang ja">ティアに応じて段階的に。レポート作成は実工数が発生。</span><span class="lang en">Scale by tier. Report preparation costs real staff hours.</span></p>
               </div>
             </td>
           </tr>
@@ -3067,16 +3067,16 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           <tr class="info-detail-row" id="info-coinvest">
             <td colspan="4">
               <div class="info-card">
-                <h5>共同投資権（Co-investment Rights）</h5>
-                <p>次回ラウンド以降の <b>投資参加権</b>。希薄化防止と将来資本構成の柔軟性のトレードオフ。</p>
+                <h5><span class="lang ja">共同投資権（Co-investment Rights）</span><span class="lang en">Co-investment Rights</span></h5>
+                <p><span class="lang ja">次回ラウンド以降の <b>投資参加権</b>。希薄化防止と将来資本構成の柔軟性のトレードオフ。</span><span class="lang en"><b>Right to participate</b> in future rounds. Trade-off between anti-dilution protection and future flexibility on cap structure.</span></p>
                 <ul>
-                  <li><b>なし：</b>次回ラウンドへの参加保証なし（標準）</li>
-                  <li><b>次ラウンド按分（pro-rata）：</b>現持分比率に応じて次ラウンドに参加できる権利</li>
-                  <li><b>按分 + 優先閲覧：</b>按分権 + 次ラウンド提案を他者より先に見れる権利</li>
-                  <li><b>完全先取権（preemption）：</b>次ラウンドを優先的に取得できる強力な権利（最高リスク）</li>
+                  <li><span class="lang ja"><b>なし：</b>次回ラウンドへの参加保証なし（標準）</span><span class="lang en"><b>None:</b> no guaranteed participation in future rounds (standard)</span></li>
+                  <li><span class="lang ja"><b>次ラウンド按分（pro-rata）：</b>現持分比率に応じて次ラウンドに参加できる権利</span><span class="lang en"><b>Pro-rata:</b> right to participate in the next round per current ownership ratio</span></li>
+                  <li><span class="lang ja"><b>按分 + 優先閲覧：</b>按分権 + 次ラウンド提案を他者より先に見れる権利</span><span class="lang en"><b>Pro-rata + first look:</b> pro-rata right + see next-round terms before others</span></li>
+                  <li><span class="lang ja"><b>完全先取権（preemption）：</b>次ラウンドを優先的に取得できる強力な権利（最高リスク）</span><span class="lang en"><b>Full preemption:</b> strong right to preempt the next round (highest risk)</span></li>
                 </ul>
-                <p><span class="info-tag rec">推奨</span>古竹 = 按分+優先閲覧／林・森 = 次ラウンド按分／芽・根 = なし</p>
-                <p style="font-size:12px; color:var(--muted)">⚠ 全ティアに付与すると、次回ラウンド設計が大きく制約される。</p>
+                <p><span class="info-tag rec"><span class="lang ja">推奨</span><span class="lang en">Rec.</span></span><span class="lang ja">古竹 = 按分+優先閲覧／林・森 = 次ラウンド按分／芽・根 = なし</span><span class="lang en">古竹 = pro-rata + first look / 林・森 = pro-rata / 芽・根 = none</span></p>
+                <p style="font-size:12px; color:var(--muted)">⚠ <span class="lang ja">全ティアに付与すると、次回ラウンド設計が大きく制約される。</span><span class="lang en">Granting to all tiers heavily constrains future round design.</span></p>
               </div>
             </td>
           </tr>
