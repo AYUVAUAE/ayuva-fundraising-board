@@ -77,19 +77,63 @@ h1{
   .partner p{text-align:left}
 }
 
+/* Two-level TOC: 12 Part buttons; click expands sub-sections inline */
 .toc{
-  margin-top:36px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px;
+  margin-top:36px;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:8px; align-items:start;
 }
-.toc a{
-  display:block; padding:14px 16px; background:var(--paper); border:1px solid var(--line);
-  border-radius:10px; text-decoration:none; color:var(--ink); font-size:14px;
-  transition:border-color .15s, transform .15s;
+.toc-group{
+  background:var(--paper); border:1px solid var(--line); border-radius:12px;
+  overflow:hidden; transition:border-color .15s;
 }
-.toc a:hover{border-color:var(--accent); transform:translateY(-1px)}
-.toc a span.num{
-  display:inline-block; min-width:30px; color:var(--accent-deep); font-weight:600;
-  font-variant-numeric:tabular-nums;
+.toc-group:hover{border-color:var(--line-strong)}
+.toc-group.open{border-color:var(--accent)}
+.toc-part{
+  width:100%; text-align:left; cursor:pointer;
+  background:none; border:none; font-family:inherit;
+  padding:13px 14px; font-size:13.5px; color:var(--ink); font-weight:600;
+  display:flex; align-items:center; gap:10px;
+  transition:background-color .15s;
 }
+.toc-part:hover{background:var(--bg)}
+.toc-part .num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px;
+  background:var(--accent-deep); color:#fff;
+  border-radius:50%; font-weight:700; font-size:11.5px;
+  font-variant-numeric:tabular-nums; flex-shrink:0;
+}
+.toc-part .toc-label{flex:1; line-height:1.3}
+.toc-part::after{
+  content:"▸"; color:var(--muted); font-size:11px;
+  transition:transform .2s ease; flex-shrink:0;
+}
+.toc-group.open .toc-part::after{transform:rotate(90deg); color:var(--accent-deep)}
+.toc-subs{
+  display:none; padding:4px 8px 10px;
+  border-top:1px solid var(--line); background:var(--bg);
+}
+.toc-group.open .toc-subs{display:block}
+.toc-subs a{
+  display:flex; align-items:baseline; gap:8px;
+  padding:6px 8px; font-size:12px;
+  color:var(--ink-soft); text-decoration:none; border-radius:6px;
+  line-height:1.45;
+}
+.toc-subs a:hover{background:var(--paper); color:var(--accent-deep)}
+.toc-subs a .sub-num{
+  display:inline-block; min-width:34px; color:var(--accent-deep);
+  font-variant-numeric:tabular-nums; font-weight:600; font-size:11px;
+  flex-shrink:0;
+}
+/* Pending Parts visually de-emphasized */
+.toc-group.pending{
+  background:repeating-linear-gradient(135deg,#fafaf7,#fafaf7 6px,#f3f1e8 6px,#f3f1e8 12px);
+  border-style:dashed;
+}
+.toc-group.pending .toc-part{color:var(--muted)}
+.toc-group.pending .toc-part .num{background:var(--gold)}
 
 section.chapter{
   margin:72px 0; scroll-margin-top:24px;
@@ -1214,65 +1258,166 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
   </div>
 
   <nav class="toc">
-    <a href="#overview"><span class="num">1</span> <span class="lang ja">プロジェクト概要</span><span class="lang en">Project Overview</span></a>
-    <a href="#safe"><span class="num">2.1</span> <span class="lang ja">SAFEノートとは</span><span class="lang en">What is a SAFE Note</span></a>
-    <a href="#corp"><span class="num">2.2</span> <span class="lang ja">法人ストラクチャー設計</span><span class="lang en">Legal Entity Structure</span></a>
-    <a href="#cashflow"><span class="num">2.3</span> <span class="lang ja">88M AED Year 1</span><span class="lang en">88M AED Year 1 Cashflow</span></a>
-    <a href="#cvml"><span class="num">2.4</span> <span class="lang ja">CVML業務範囲</span><span class="lang en">CVML Scope of Work</span></a>
-    <a href="#invest-overview"><span class="num">3.1</span> <span class="lang ja">投資会社の概観</span><span class="lang en">Investment Company Overview</span></a>
-    <a href="#voting"><span class="num">3.2</span> <span class="lang ja">議決権構造</span><span class="lang en">Voting Structure</span></a>
-    <a href="#rule49"><span class="num">3.3</span> <span class="lang ja">49人ルールの課題</span><span class="lang en">FIEA 49-Investor Rule</span></a>
-    <a href="#phase-tier"><span class="num">3.5</span> <span class="lang ja">Phase × Tier マッピング</span><span class="lang en">Phase × Tier Mapping</span></a>
-    <a href="#part3-summary"><span class="num">3.6</span> <span class="lang ja">Part 3 まとめ</span><span class="lang en">Part 3 Summary</span></a>
-    <a href="#pmc-role"><span class="num">4.1</span> <span class="lang ja">PMC の役割</span><span class="lang en">PMC Role</span></a>
-    <a href="#pmc-jurisdiction"><span class="num">4.2</span> <span class="lang ja">PMC 管轄区域</span><span class="lang en">PMC Jurisdiction</span></a>
-    <a href="#pmc-bamboo"><span class="num">4.3</span> <span class="lang ja">PT Bamboo Lab 15%</span><span class="lang en">PT Bamboo Lab 15%</span></a>
-    <a href="#pmc-fee"><span class="num">4.4</span> <span class="lang ja">PMC 手数料</span><span class="lang en">PMC Fee</span></a>
-    <a href="#part4-summary"><span class="num">4.5</span> <span class="lang ja">Part 4 まとめ</span><span class="lang en">Part 4 Summary</span></a>
-    <a href="#amc-role"><span class="num">5.1</span> <span class="lang ja">AMC の役割・収益</span><span class="lang en">AMC Role &amp; Revenue</span></a>
-    <a href="#amc-operating"><span class="num">5.2</span> <span class="lang ja">運営モデル</span><span class="lang en">Operating Model</span></a>
-    <a href="#amc-jurisdiction"><span class="num">5.3</span> <span class="lang ja">AMC 管轄区域</span><span class="lang en">AMC Jurisdiction</span></a>
-    <a href="#part5-summary"><span class="num">5.4</span> <span class="lang ja">Part 5 まとめ</span><span class="lang en">Part 5 Summary</span></a>
-    <a href="#spv-role"><span class="num">6.1</span> <span class="lang ja">SPV の役割</span><span class="lang en">SPV Role</span></a>
-    <a href="#spv-lease-buy"><span class="num">6.2</span> <span class="lang ja">Lease vs Buy</span><span class="lang en">Lease vs Buy</span></a>
-    <a href="#spv-jurisdiction"><span class="num">6.3</span> <span class="lang ja">SPV 管轄区域</span><span class="lang en">SPV Jurisdiction</span></a>
-    <a href="#spv-number"><span class="num">6.4</span> <span class="lang ja">SPV 数</span><span class="lang en">Number of SPVs</span></a>
-    <a href="#spv-ownership"><span class="num">6.5</span> <span class="lang ja">SPV 所有構造</span><span class="lang en">SPV Ownership</span></a>
-    <a href="#part6-summary"><span class="num">6.6</span> <span class="lang ja">Part 6 まとめ</span><span class="lang en">Part 6 Summary</span></a>
-    <a href="#tax-overview"><span class="num">7.1</span> <span class="lang ja">税務・登録概観</span><span class="lang en">Tax/VAT/Visa Overview</span></a>
-    <a href="#tax-scope"><span class="num">7.2</span> <span class="lang ja">登録戦略</span><span class="lang en">Registration Strategy</span></a>
-    <a href="#tax-qfzp"><span class="num">7.3</span> <span class="lang ja">投資会社 0% 税率</span><span class="lang en">Investment Co 0% Tax</span></a>
-    <a href="#tax-visa"><span class="num">7.4</span> <span class="lang ja">ビザサービス</span><span class="lang en">Visa Service</span></a>
-    <a href="#part7-summary"><span class="num">7.5</span> <span class="lang ja">Part 7 まとめ</span><span class="lang en">Part 7 Summary</span></a>
-    <a href="#docs-categories"><span class="num">8.1</span> <span class="lang ja">必要書類</span><span class="lang en">Document Categories</span></a>
-    <a href="#docs-timeline"><span class="num">8.2</span> <span class="lang ja">タイムライン</span><span class="lang en">Timeline</span></a>
-    <a href="#docs-actions"><span class="num">8.3</span> <span class="lang ja">即実行アクション</span><span class="lang en">Action Items</span></a>
-    <a href="#cost"><span class="num">9.1</span> <span class="lang ja">提案書ベースのコスト</span><span class="lang en">Proposal Baseline Costs</span></a>
-    <a href="#cost-scenarios"><span class="num">9.2</span> <span class="lang ja">3 シナリオ</span><span class="lang en">3 Cost Scenarios</span></a>
-    <a href="#cost-out-of-scope"><span class="num">9.3</span> <span class="lang ja">スコープ外コスト</span><span class="lang en">Out-of-Scope Costs</span></a>
-    <a href="#cost-leverage"><span class="num">9.4</span> <span class="lang ja">交渉レバレッジ</span><span class="lang en">Negotiation Leverage</span></a>
-    <a href="#cost-strategy"><span class="num">9.5</span> <span class="lang ja">交渉戦略</span><span class="lang en">Negotiation Strategy</span></a>
-    <a href="#cost-ceo-input"><span class="num">9.6</span> <span class="lang ja">CEO 入力欄</span><span class="lang en">CEO Input Fields</span></a>
-    <a href="#part9-summary"><span class="num">9.7</span> <span class="lang ja">Part 9 まとめ</span><span class="lang en">Part 9 Summary</span></a>
-    <a href="#cvml-team"><span class="num">10.1</span> <span class="lang ja">CVML キーパーソン</span><span class="lang en">CVML Key Personnel</span></a>
-    <a href="#cvml-strengths-gaps"><span class="num">10.2</span> <span class="lang ja">強み vs ギャップ</span><span class="lang en">Strengths vs Gaps</span></a>
-    <a href="#cvml-verification"><span class="num">10.3</span> <span class="lang ja">確認チェックリスト</span><span class="lang en">Verification Checklist</span></a>
-    <a href="#risk-gaps"><span class="num">11.1</span> <span class="lang ja">スコープ外領域</span><span class="lang en">Out-of-Scope Areas</span></a>
-    <a href="#risk-matrix"><span class="num">11.2</span> <span class="lang ja">リスクマトリクス</span><span class="lang en">Risk Matrix</span></a>
-    <a href="#risk-pre-signing"><span class="num">11.3</span> <span class="lang ja">契約前確認</span><span class="lang en">Pre-Signing Items</span></a>
-    <a href="#risk-mitigation"><span class="num">11.4</span> <span class="lang ja">ミティゲーション</span><span class="lang en">Mitigation Actions</span></a>
-    <a href="#master-decisions"><span class="num">12.1</span> <span class="lang ja">全決定事項マスターログ</span><span class="lang en">Master Decisions Log</span></a>
-    <a href="#action-items"><span class="num">12.2</span> <span class="lang ja">アクションアイテム</span><span class="lang en">Action Items</span></a>
-    <a href="#implementation-timeline"><span class="num">12.3</span> <span class="lang ja">タイムライン</span><span class="lang en">Implementation Timeline</span></a>
-    <a href="#ceo-checklist"><span class="num">12.4</span> <span class="lang ja">CEO 決定リスト</span><span class="lang en">CEO Decision Checklist</span></a>
-    <a href="#next-steps"><span class="num">12.5</span> <span class="lang ja">次ステップ</span><span class="lang en">Next Steps</span></a>
-    <a href="#handoff"><span class="num">12.6</span> <span class="lang ja">ハンドオフ</span><span class="lang en">Handoff Resources</span></a>
-    <a href="#tax" class="pending"><span class="num">7</span> 税務・登録要件</a>
-    <a href="#docs" class="pending"><span class="num">8</span> ドキュメントチェックリスト</a>
-    <a href="#fees" class="pending"><span class="num">9</span> 費用詳細分析</a>
-    <a href="#team" class="pending"><span class="num">10</span> CVMLチーム評価</a>
-    <a href="#risks" class="pending"><span class="num">11</span> ギャップとリスク</a>
-    <a href="#summary" class="pending"><span class="num">12</span> 最終サマリー</a>
+    <div class="toc-group" data-part="1">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">1</span>
+        <span class="toc-label"><span class="lang ja">プロジェクト概要</span><span class="lang en">Project Overview</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#overview"><span class="sub-num">1</span><span class="lang ja">プロジェクト概要</span><span class="lang en">Project Overview</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="2">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">2</span>
+        <span class="toc-label"><span class="lang ja">法人ストラクチャー設計</span><span class="lang en">Legal Entity Structure</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#safe"><span class="sub-num">2.1</span><span class="lang ja">SAFEノートとは</span><span class="lang en">What is a SAFE Note</span></a>
+        <a href="#corp"><span class="sub-num">2.2</span><span class="lang ja">法人ストラクチャー設計</span><span class="lang en">Legal Entity Structure</span></a>
+        <a href="#cashflow"><span class="sub-num">2.3</span><span class="lang ja">88M AED Year 1</span><span class="lang en">88M AED Year 1 Cashflow</span></a>
+        <a href="#cvml"><span class="sub-num">2.4</span><span class="lang ja">CVML業務範囲</span><span class="lang en">CVML Scope of Work</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="3">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">3</span>
+        <span class="toc-label"><span class="lang ja">投資会社・FIEA</span><span class="lang en">Investment Co &amp; FIEA</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#invest-overview"><span class="sub-num">3.1</span><span class="lang ja">投資会社の概観</span><span class="lang en">Investment Company Overview</span></a>
+        <a href="#voting"><span class="sub-num">3.2</span><span class="lang ja">議決権構造</span><span class="lang en">Voting Structure</span></a>
+        <a href="#rule49"><span class="sub-num">3.3</span><span class="lang ja">49人ルールの課題</span><span class="lang en">FIEA 49-Investor Rule</span></a>
+        <a href="#phase-tier"><span class="sub-num">3.5</span><span class="lang ja">Phase × Tier マッピング</span><span class="lang en">Phase × Tier Mapping</span></a>
+        <a href="#part3-summary"><span class="sub-num">3.6</span><span class="lang ja">Part 3 まとめ</span><span class="lang en">Part 3 Summary</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="4">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">4</span>
+        <span class="toc-label"><span class="lang ja">PMC</span><span class="lang en">PMC</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#pmc-role"><span class="sub-num">4.1</span><span class="lang ja">PMC の役割</span><span class="lang en">PMC Role</span></a>
+        <a href="#pmc-jurisdiction"><span class="sub-num">4.2</span><span class="lang ja">PMC 管轄区域</span><span class="lang en">PMC Jurisdiction</span></a>
+        <a href="#pmc-bamboo"><span class="sub-num">4.3</span><span class="lang ja">PT Bamboo Lab 15%</span><span class="lang en">PT Bamboo Lab 15%</span></a>
+        <a href="#pmc-fee"><span class="sub-num">4.4</span><span class="lang ja">PMC 手数料</span><span class="lang en">PMC Fee</span></a>
+        <a href="#part4-summary"><span class="sub-num">4.5</span><span class="lang ja">Part 4 まとめ</span><span class="lang en">Part 4 Summary</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="5">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">5</span>
+        <span class="toc-label"><span class="lang ja">AMC</span><span class="lang en">AMC</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#amc-role"><span class="sub-num">5.1</span><span class="lang ja">AMC の役割・収益</span><span class="lang en">AMC Role &amp; Revenue</span></a>
+        <a href="#amc-operating"><span class="sub-num">5.2</span><span class="lang ja">運営モデル</span><span class="lang en">Operating Model</span></a>
+        <a href="#amc-jurisdiction"><span class="sub-num">5.3</span><span class="lang ja">AMC 管轄区域</span><span class="lang en">AMC Jurisdiction</span></a>
+        <a href="#part5-summary"><span class="sub-num">5.4</span><span class="lang ja">Part 5 まとめ</span><span class="lang en">Part 5 Summary</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="6">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">6</span>
+        <span class="toc-label"><span class="lang ja">SPV</span><span class="lang en">SPV</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#spv-role"><span class="sub-num">6.1</span><span class="lang ja">SPV の役割</span><span class="lang en">SPV Role</span></a>
+        <a href="#spv-lease-buy"><span class="sub-num">6.2</span><span class="lang ja">Lease vs Buy</span><span class="lang en">Lease vs Buy</span></a>
+        <a href="#spv-jurisdiction"><span class="sub-num">6.3</span><span class="lang ja">SPV 管轄区域</span><span class="lang en">SPV Jurisdiction</span></a>
+        <a href="#spv-number"><span class="sub-num">6.4</span><span class="lang ja">SPV 数</span><span class="lang en">Number of SPVs</span></a>
+        <a href="#spv-ownership"><span class="sub-num">6.5</span><span class="lang ja">SPV 所有構造</span><span class="lang en">SPV Ownership</span></a>
+        <a href="#part6-summary"><span class="sub-num">6.6</span><span class="lang ja">Part 6 まとめ</span><span class="lang en">Part 6 Summary</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="7">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">7</span>
+        <span class="toc-label"><span class="lang ja">税務・登録要件</span><span class="lang en">Tax / VAT / Visa</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#tax-overview"><span class="sub-num">7.1</span><span class="lang ja">税務・登録概観</span><span class="lang en">Tax/VAT/Visa Overview</span></a>
+        <a href="#tax-scope"><span class="sub-num">7.2</span><span class="lang ja">登録戦略</span><span class="lang en">Registration Strategy</span></a>
+        <a href="#tax-qfzp"><span class="sub-num">7.3</span><span class="lang ja">投資会社 0% 税率</span><span class="lang en">Investment Co 0% Tax</span></a>
+        <a href="#tax-visa"><span class="sub-num">7.4</span><span class="lang ja">ビザサービス</span><span class="lang en">Visa Service</span></a>
+        <a href="#part7-summary"><span class="sub-num">7.5</span><span class="lang ja">Part 7 まとめ</span><span class="lang en">Part 7 Summary</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="8">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">8</span>
+        <span class="toc-label"><span class="lang ja">ドキュメント</span><span class="lang en">Documents</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#docs-categories"><span class="sub-num">8.1</span><span class="lang ja">必要書類</span><span class="lang en">Document Categories</span></a>
+        <a href="#docs-timeline"><span class="sub-num">8.2</span><span class="lang ja">タイムライン</span><span class="lang en">Timeline</span></a>
+        <a href="#docs-actions"><span class="sub-num">8.3</span><span class="lang ja">即実行アクション</span><span class="lang en">Action Items</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="9">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">9</span>
+        <span class="toc-label"><span class="lang ja">費用詳細分析</span><span class="lang en">Cost Analysis</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#cost"><span class="sub-num">9.1</span><span class="lang ja">提案書ベースのコスト</span><span class="lang en">Proposal Baseline Costs</span></a>
+        <a href="#cost-scenarios"><span class="sub-num">9.2</span><span class="lang ja">3 シナリオ</span><span class="lang en">3 Cost Scenarios</span></a>
+        <a href="#cost-out-of-scope"><span class="sub-num">9.3</span><span class="lang ja">スコープ外コスト</span><span class="lang en">Out-of-Scope Costs</span></a>
+        <a href="#cost-leverage"><span class="sub-num">9.4</span><span class="lang ja">交渉レバレッジ</span><span class="lang en">Negotiation Leverage</span></a>
+        <a href="#cost-strategy"><span class="sub-num">9.5</span><span class="lang ja">交渉戦略</span><span class="lang en">Negotiation Strategy</span></a>
+        <a href="#cost-ceo-input"><span class="sub-num">9.6</span><span class="lang ja">CEO 入力欄</span><span class="lang en">CEO Input Fields</span></a>
+        <a href="#part9-summary"><span class="sub-num">9.7</span><span class="lang ja">Part 9 まとめ</span><span class="lang en">Part 9 Summary</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="10">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">10</span>
+        <span class="toc-label"><span class="lang ja">CVML チーム評価</span><span class="lang en">CVML Team Review</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#cvml-team"><span class="sub-num">10.1</span><span class="lang ja">CVML キーパーソン</span><span class="lang en">CVML Key Personnel</span></a>
+        <a href="#cvml-strengths-gaps"><span class="sub-num">10.2</span><span class="lang ja">強み vs ギャップ</span><span class="lang en">Strengths vs Gaps</span></a>
+        <a href="#cvml-verification"><span class="sub-num">10.3</span><span class="lang ja">確認チェックリスト</span><span class="lang en">Verification Checklist</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="11">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">11</span>
+        <span class="toc-label"><span class="lang ja">ギャップとリスク</span><span class="lang en">Gaps &amp; Risks</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#risk-gaps"><span class="sub-num">11.1</span><span class="lang ja">スコープ外領域</span><span class="lang en">Out-of-Scope Areas</span></a>
+        <a href="#risk-matrix"><span class="sub-num">11.2</span><span class="lang ja">リスクマトリクス</span><span class="lang en">Risk Matrix</span></a>
+        <a href="#risk-pre-signing"><span class="sub-num">11.3</span><span class="lang ja">契約前確認</span><span class="lang en">Pre-Signing Items</span></a>
+        <a href="#risk-mitigation"><span class="sub-num">11.4</span><span class="lang ja">ミティゲーション</span><span class="lang en">Mitigation Actions</span></a>
+      </div>
+    </div>
+
+    <div class="toc-group" data-part="12">
+      <button class="toc-part" type="button" aria-expanded="false">
+        <span class="num">12</span>
+        <span class="toc-label"><span class="lang ja">最終サマリー</span><span class="lang en">Final Summary</span></span>
+      </button>
+      <div class="toc-subs">
+        <a href="#master-decisions"><span class="sub-num">12.1</span><span class="lang ja">全決定事項マスターログ</span><span class="lang en">Master Decisions Log</span></a>
+        <a href="#action-items"><span class="sub-num">12.2</span><span class="lang ja">アクションアイテム</span><span class="lang en">Action Items</span></a>
+        <a href="#implementation-timeline"><span class="sub-num">12.3</span><span class="lang ja">タイムライン</span><span class="lang en">Implementation Timeline</span></a>
+        <a href="#ceo-checklist"><span class="sub-num">12.4</span><span class="lang ja">CEO 決定リスト</span><span class="lang en">CEO Decision Checklist</span></a>
+        <a href="#next-steps"><span class="sub-num">12.5</span><span class="lang ja">次ステップ</span><span class="lang en">Next Steps</span></a>
+        <a href="#handoff"><span class="sub-num">12.6</span><span class="lang ja">ハンドオフ</span><span class="lang en">Handoff Resources</span></a>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -5703,6 +5848,30 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
 
     renderRisk();
   }
+
+  // ===== TOC: collapsible Part groups =====
+  document.querySelectorAll('.toc-part').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.toc-group');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      group.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Auto-expand the Part group whose anchor matches current hash
+  document.querySelectorAll('.toc-subs a').forEach(a => {
+    a.addEventListener('click', () => {
+      const group = a.closest('.toc-group');
+      if (group && !group.classList.contains('open')) {
+        const btn = group.querySelector('.toc-part');
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'true');
+          group.classList.add('open');
+        }
+      }
+    });
+  });
 })();
 </script>
 </body>
