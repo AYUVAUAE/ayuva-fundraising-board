@@ -816,6 +816,49 @@ details.opt-card summary .opt-subtitle{
 details.opt-card .opt-body{padding:6px 20px 18px}
 details.opt-card .opt-body .pros, details.opt-card .opt-body .cons{margin:8px 0}
 
+/* Section notes box — collapsible, appended to each chapter */
+.notes-box{
+  margin-top:28px; border:1px dashed var(--line-strong); border-radius:10px;
+  background:repeating-linear-gradient(135deg,#fcfbf6,#fcfbf6 8px,#f7f5ec 8px,#f7f5ec 16px);
+  font-family:inherit;
+}
+.notes-box[open]{
+  background:#fffdf7; border-style:solid; border-color:var(--accent);
+}
+.notes-box > summary{
+  cursor:pointer; padding:10px 14px; font-size:12.5px; font-weight:600;
+  color:var(--ink-soft); list-style:none;
+  display:flex; align-items:center; gap:8px;
+}
+.notes-box > summary::-webkit-details-marker{display:none}
+.notes-box > summary::before{
+  content:"📝"; font-size:13px;
+}
+.notes-box[open] > summary{color:var(--accent-deep); border-bottom:1px solid var(--line)}
+.notes-box .notes-meta{
+  font-size:10.5px; color:var(--muted); font-weight:500;
+  margin-left:auto; font-variant-numeric:tabular-nums;
+}
+.notes-box .notes-body{padding:10px 14px 14px}
+.notes-box textarea{
+  width:100%; min-height:90px; resize:vertical;
+  font-family:inherit; font-size:13px; line-height:1.55;
+  color:var(--ink); background:#fff;
+  border:1px solid var(--line); border-radius:6px; padding:10px 12px;
+  box-sizing:border-box;
+}
+.notes-box textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 2px rgba(184,148,72,.15)}
+.notes-box .notes-actions{
+  display:flex; gap:10px; align-items:center; margin-top:8px;
+  font-size:11px; color:var(--muted);
+}
+.notes-box .notes-clear{
+  background:none; border:none; cursor:pointer; color:var(--muted);
+  font-family:inherit; font-size:11px; padding:2px 8px; border-radius:4px;
+}
+.notes-box .notes-clear:hover{color:#a04040; background:#fef0ec}
+.notes-box .notes-saved{color:#6b8e23; font-weight:500}
+
 /* Language toggle (JP ⇄ EN) */
 .lang-toggle{
   display:inline-flex; align-items:center; gap:0;
@@ -5937,6 +5980,89 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
           btn.setAttribute('aria-expanded', 'true');
           group.classList.add('open');
         }
+      }
+    });
+  });
+
+  // ===== Per-section notes (auto-injected, persisted to localStorage) =====
+  function fmtTime(ts){
+    if (!ts) return '';
+    const d = new Date(ts);
+    const pad = n => String(n).padStart(2,'0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+  document.querySelectorAll('section.chapter[id]').forEach(sec => {
+    const id = sec.id;
+    const storeKey = STORAGE_PREFIX + 'notes:' + id;
+    const tsKey = STORAGE_PREFIX + 'notes-ts:' + id;
+    let saved = '', savedTs = '';
+    try { saved = localStorage.getItem(storeKey) || ''; savedTs = localStorage.getItem(tsKey) || ''; } catch(e){}
+
+    const box = document.createElement('details');
+    box.className = 'notes-box';
+    if (saved) box.open = true;
+
+    const sum = document.createElement('summary');
+    sum.innerHTML = `
+      <span class="lang ja">メモ${saved ? '（記入済み）' : 'を追加'}</span>
+      <span class="lang en">${saved ? 'Notes (saved)' : 'Add notes'}</span>
+      <span class="notes-meta">${savedTs ? fmtTime(Number(savedTs)) : ''}</span>
+    `;
+    box.appendChild(sum);
+
+    const body = document.createElement('div');
+    body.className = 'notes-body';
+    const ta = document.createElement('textarea');
+    ta.value = saved;
+    ta.setAttribute('placeholder', '');
+    ta.setAttribute('aria-label', 'Notes for ' + id);
+    body.appendChild(ta);
+
+    const actions = document.createElement('div');
+    actions.className = 'notes-actions';
+    const status = document.createElement('span');
+    status.className = 'notes-status';
+    const clearBtn = document.createElement('button');
+    clearBtn.type = 'button';
+    clearBtn.className = 'notes-clear';
+    clearBtn.innerHTML = '<span class="lang ja">クリア</span><span class="lang en">Clear</span>';
+    actions.appendChild(status);
+    actions.appendChild(clearBtn);
+    body.appendChild(actions);
+    box.appendChild(body);
+    sec.appendChild(box);
+
+    let timer;
+    const persist = () => {
+      const v = ta.value;
+      try {
+        if (v) {
+          const now = Date.now();
+          localStorage.setItem(storeKey, v);
+          localStorage.setItem(tsKey, String(now));
+          status.innerHTML = '<span class="notes-saved">✓ </span><span class="lang ja">保存しました</span><span class="lang en">Saved</span>';
+          sum.querySelector('.notes-meta').textContent = fmtTime(now);
+          sum.querySelector('.lang.ja').textContent = 'メモ（記入済み）';
+          sum.querySelector('.lang.en').textContent = 'Notes (saved)';
+        } else {
+          localStorage.removeItem(storeKey);
+          localStorage.removeItem(tsKey);
+          status.textContent = '';
+          sum.querySelector('.notes-meta').textContent = '';
+          sum.querySelector('.lang.ja').textContent = 'メモを追加';
+          sum.querySelector('.lang.en').textContent = 'Add notes';
+        }
+      } catch(e){}
+    };
+    ta.addEventListener('input', () => {
+      status.innerHTML = '<span class="lang ja">入力中…</span><span class="lang en">Typing…</span>';
+      clearTimeout(timer);
+      timer = setTimeout(persist, 500);
+    });
+    clearBtn.addEventListener('click', () => {
+      if (!ta.value || confirm('Clear these notes?')) {
+        ta.value = '';
+        persist();
       }
     });
   });
