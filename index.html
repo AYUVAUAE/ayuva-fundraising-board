@@ -5684,22 +5684,98 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
 
   // === Furigana toggle (show/hide ruby rt) ===
   const FUR_KEY = STORAGE_PREFIX + 'furigana';
-  function setFurigana(on){
-    document.body.classList.toggle('no-furigana', !on);
+  function updateFurButtons(on, loading){
     document.querySelectorAll('.fur-toggle').forEach(b => {
       b.dataset.on = on ? 'true' : 'false';
       const ja = b.querySelector('.lang.ja');
       const en = b.querySelector('.lang.en');
-      if (ja) ja.textContent = on ? 'ふりがな ON' : 'ふりがな OFF';
-      if (en) en.textContent = on ? 'Furigana ON' : 'Furigana OFF';
+      if (ja) ja.textContent = loading ? 'ふりがな読み込み中…' : (on ? 'ふりがな ON' : 'ふりがな OFF');
+      if (en) en.textContent = loading ? 'Loading furigana…' : (on ? 'Furigana ON' : 'Furigana OFF');
+      b.disabled = !!loading;
     });
-    try { localStorage.setItem(FUR_KEY, on ? '1' : '0'); } catch (e) {}
   }
+  function setFurigana(on){
+    document.body.classList.toggle('no-furigana', !on);
+    updateFurButtons(on, false);
+    try { localStorage.setItem(FUR_KEY, on ? '1' : '0'); } catch (e) {}
+    if (on) ensureAutoFurigana();
+  }
+
+  // ----- Auto-furigana via kuroshiro + kuromoji (lazy-loaded on first ON) -----
+  let kuroshiroReady = null;
+  function loadScript(src){
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src; s.async = true;
+      s.onload = resolve; s.onerror = () => reject(new Error('Failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+  function initKuroshiro(){
+    if (kuroshiroReady) return kuroshiroReady;
+    kuroshiroReady = (async () => {
+      await loadScript('https://cdn.jsdelivr.net/npm/kuroshiro@1.2.0/dist/kuroshiro.min.js');
+      await loadScript('https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js');
+      const Kuroshiro = window.Kuroshiro && window.Kuroshiro.default ? window.Kuroshiro.default : window.Kuroshiro;
+      const Analyzer = window.KuromojiAnalyzer;
+      const k = new Kuroshiro();
+      await k.init(new Analyzer({ dictPath: 'https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/' }));
+      return k;
+    })();
+    return kuroshiroReady;
+  }
+  let furiganaApplied = false;
+  let furiganaInFlight = false;
+  async function ensureAutoFurigana(){
+    if (furiganaApplied || furiganaInFlight) return;
+    furiganaInFlight = true;
+    updateFurButtons(true, true);
+    try {
+      const k = await initKuroshiro();
+      const kanjiRe = /[一-鿿]/;
+      const spans = Array.from(document.querySelectorAll('.lang.ja:not([data-fur-done])'));
+      // Yield to the browser between spans so the page stays responsive
+      const yieldEvery = 8;
+      for (let i = 0; i < spans.length; i++) {
+        const span = spans[i];
+        const walker = document.createTreeWalker(span, NodeFilter.SHOW_TEXT, {
+          acceptNode: (node) => {
+            if (!kanjiRe.test(node.textContent)) return NodeFilter.FILTER_REJECT;
+            // Skip text already inside a ruby (rt or rb) — already has reading
+            if (node.parentElement && node.parentElement.closest('ruby')) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        const targets = [];
+        let n; while (n = walker.nextNode()) targets.push(n);
+        for (const node of targets) {
+          try {
+            const html = await k.convert(node.textContent, { mode: 'furigana', to: 'hiragana' });
+            const wrap = document.createElement('span');
+            wrap.className = 'fur-injected';
+            wrap.innerHTML = html;
+            node.parentNode.replaceChild(wrap, node);
+          } catch (e) { /* skip on error, leave bare */ }
+        }
+        span.setAttribute('data-fur-done', '1');
+        if (i % yieldEvery === 0) await new Promise(r => setTimeout(r, 0));
+      }
+      furiganaApplied = true;
+    } catch (e) {
+      console.warn('[furigana] load failed', e);
+    } finally {
+      furiganaInFlight = false;
+      const on = document.body.classList.contains('no-furigana') ? false : true;
+      updateFurButtons(on, false);
+    }
+  }
+
   let savedFur = '1';
   try { savedFur = localStorage.getItem(FUR_KEY) || '1'; } catch (e) {}
   setFurigana(savedFur === '1');
   document.querySelectorAll('.fur-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
+      if (btn.disabled) return;
       setFurigana(btn.dataset.on !== 'true');
     });
   });
