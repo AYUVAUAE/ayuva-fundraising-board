@@ -829,6 +829,13 @@ details.opt-card .opt-body .pros, details.opt-card .opt-body .cons{margin:8px 0}
 }
 .lang-toggle button.active{background:var(--accent); color:#fff}
 .lang-toggle button:not(.active):hover{color:var(--accent-deep)}
+.lang-toggle .kbd-hint{
+  font-size:9.5px; font-weight:600; color:var(--muted);
+  padding:0 9px 0 8px; letter-spacing:.05em;
+  border-left:1px solid var(--line);
+  font-variant-numeric:tabular-nums;
+}
+@media (max-width:720px){ .lang-toggle .kbd-hint{display:none} }
 
 /* Hide opposite language by default. Use `revert` so block-level elements
    (p, div, li) keep their natural display when shown. */
@@ -1247,9 +1254,10 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
       <span class="lang ja">最終更新：2026年5月4日</span>
       <span class="lang en">Updated: 2026-05-04</span>
     </span>
-    <div class="lang-toggle" role="tablist" aria-label="Language toggle">
+    <div class="lang-toggle" role="tablist" aria-label="Language toggle" title="⌘E / Ctrl+E to toggle">
       <button type="button" data-lang="ja" class="active">日本語</button>
       <button type="button" data-lang="en">EN</button>
+      <span class="kbd-hint" aria-hidden="true">⌘E</span>
     </div>
     <button type="button" class="fur-toggle" data-on="true" aria-label="ふりがな表示切替">
       <span class="lang ja">ふりがな ON</span>
@@ -5621,6 +5629,14 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
   setLang(savedLang);
   document.querySelectorAll('.lang-toggle button').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.dataset.lang));
+  });
+  // Keyboard shortcut: Cmd/Ctrl + E toggles JP ⇄ EN
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey && (e.key === 'e' || e.key === 'E')) {
+      e.preventDefault();
+      const current = document.body.classList.contains('lang-en') ? 'en' : 'ja';
+      setLang(current === 'en' ? 'ja' : 'en');
+    }
   });
 
   // === Furigana toggle (show/hide ruby rt) ===
