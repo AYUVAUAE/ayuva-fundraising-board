@@ -5857,11 +5857,14 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
       b.disabled = !!loading;
     });
   }
-  function setFurigana(on){
+  function setFurigana(on, autoload){
     document.body.classList.toggle('no-furigana', !on);
     updateFurButtons(on, false);
     try { localStorage.setItem(FUR_KEY, on ? '1' : '0'); } catch (e) {}
-    if (on) ensureAutoFurigana();
+    // Only fetch kuroshiro when the user actively turns furigana ON.
+    // Skip the heavy CDN download on initial page load even if the
+    // saved state is ON — keeps first paint fast on weak wifi.
+    if (on && autoload) ensureAutoFurigana();
   }
 
   // ----- Auto-furigana via kuroshiro + kuromoji (lazy-loaded on first ON) -----
@@ -5935,11 +5938,11 @@ table.dec-table td:first-child a:hover{background:var(--ok-bg); border-bottom-co
 
   let savedFur = '1';
   try { savedFur = localStorage.getItem(FUR_KEY) || '1'; } catch (e) {}
-  setFurigana(savedFur === '1');
+  setFurigana(savedFur === '1', false); // don't fetch on page load
   document.querySelectorAll('.fur-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       if (btn.disabled) return;
-      setFurigana(btn.dataset.on !== 'true');
+      setFurigana(btn.dataset.on !== 'true', true); // fetch on user action
     });
   });
 
